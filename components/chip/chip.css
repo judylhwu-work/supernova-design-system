@@ -1,0 +1,108 @@
+/* =============================================================
+   Supernova — Chip
+   Source: Figma (supernova-design-system, node 2470:13493)
+
+   Usage:
+     <button class="sn-chip sn-chip-gray">Label</button>
+     <button class="sn-chip sn-chip-gray sn-chip--active" aria-selected="true">Label</button>
+     <button class="sn-chip sn-chip-white" aria-disabled="true">Label</button>
+
+   Variants:  sn-chip-gray (on white/light bg) | sn-chip-white (on gray/colored bg)
+   States:    sn-chip--active / aria-selected="true" for selected
+   Max-width: 240px (enforced by design)
+
+   Icons: include inline SVG or icon font elements as children;
+          they inherit the chip's current color automatically.
+   ============================================================= */
+
+/* ── Base ──────────────────────────────────────────────────── */
+
+.sn-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sn-spacing-4);
+  height: 24px;
+  max-width: 240px;
+  padding: 0 var(--sn-spacing-8);
+  border: none;
+  border-radius: var(--sn-radius-12);
+  box-sizing: border-box;
+  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.sn-chip:focus-visible {
+  outline: var(--sn-border-width-focus) solid var(--sn-border-color-brand-action);
+  outline-offset: 2px;
+}
+
+.sn-chip:disabled,
+.sn-chip[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Gray — use on white / light surfaces ──────────────────── */
+
+.sn-chip-gray {
+  background-color: var(--sn-surface-4);
+  color: var(--sn-text-1);
+}
+
+.sn-chip-gray:hover {
+  background-color: var(--sn-surface-5);
+}
+
+.sn-chip-gray.sn-chip--active,
+.sn-chip-gray[aria-selected="true"] {
+  background-color: var(--sn-components-chip-surface-active-default);
+  color: var(--sn-text-brand-dark);
+  font-weight: 600;
+}
+
+.sn-chip-gray.sn-chip--active:hover,
+.sn-chip-gray[aria-selected="true"]:hover {
+  background-color: var(--sn-components-chip-surface-active-hover);
+}
+
+.sn-chip-gray:disabled,
+.sn-chip-gray[aria-disabled="true"] {
+  background-color: var(--sn-surface-4);
+  color: var(--sn-text-disabled-main);
+}
+
+/* ── White — use on gray / colored surfaces ────────────────── */
+
+.sn-chip-white {
+  background-color: var(--sn-surface-1);
+  color: var(--sn-text-1);
+}
+
+.sn-chip-white:hover {
+  background-color: var(--sn-surface-3);
+}
+
+.sn-chip-white.sn-chip--active,
+.sn-chip-white[aria-selected="true"] {
+  background-color: var(--sn-components-chip-surface-active-default);
+  color: var(--sn-text-brand-dark);
+  font-weight: 600;
+}
+
+.sn-chip-white.sn-chip--active:hover,
+.sn-chip-white[aria-selected="true"]:hover {
+  background-color: var(--sn-components-chip-surface-active-hover);
+}
+
+.sn-chip-white:disabled,
+.sn-chip-white[aria-disabled="true"] {
+  background-color: var(--sn-surface-1);
+  color: var(--sn-text-disabled-main);
+}

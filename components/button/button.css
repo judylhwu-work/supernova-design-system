@@ -1,0 +1,129 @@
+/* =============================================================
+   Supernova — Button
+   Source: Figma (supernova-design-system, node 2138:21697)
+
+   Usage:
+     <button class="sn-btn sn-btn-primary">Label</button>
+     <button class="sn-btn sn-btn-secondary sn-btn-sm">Label</button>
+     <a      class="sn-btn sn-btn-text" href="…">Label</a>
+
+   Variants:  sn-btn-primary | sn-btn-secondary | sn-btn-text | sn-btn-text-secondary
+   Sizes:     default = lg (48px) | sn-btn-md (40px) | sn-btn-sm (32px)
+   ============================================================= */
+
+/* ── Base ──────────────────────────────────────────────────── */
+
+.sn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sn-spacing-8);
+  height: 48px;
+  padding: 0 var(--sn-spacing-16);
+  border: none;
+  border-radius: var(--sn-radius-12);
+  box-sizing: border-box;
+  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.sn-btn:focus-visible {
+  outline: var(--sn-border-width-focus) solid var(--sn-border-color-brand-action);
+  outline-offset: 2px;
+}
+
+.sn-btn:disabled,
+.sn-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Size modifiers ────────────────────────────────────────── */
+
+.sn-btn-md {
+  height: 40px;
+  padding: 0 var(--sn-spacing-12);
+  font-size: 14px;
+}
+
+.sn-btn-sm {
+  height: 32px;
+  padding: 0 var(--sn-spacing-12);
+  font-size: 12px;
+}
+
+/* ── Contained: Primary ────────────────────────────────────── */
+
+.sn-btn-primary {
+  background-color: var(--sn-surface-brand-action-main);
+  color: var(--sn-text-white);
+}
+
+.sn-btn-primary:hover {
+  background-color: var(--sn-surface-brand-action-hover);
+}
+
+.sn-btn-primary:disabled,
+.sn-btn-primary[aria-disabled="true"] {
+  background-color: var(--sn-surface-disabled);
+  color: var(--sn-text-disabled-invert);
+}
+
+/* ── Contained: Secondary ──────────────────────────────────── */
+
+.sn-btn-secondary {
+  background-color: var(--sn-components-surface-1);
+  color: var(--sn-text-1);
+  border: var(--sn-border-width-default) solid var(--sn-border-color-3);
+}
+
+.sn-btn-secondary:hover {
+  background-color: var(--sn-surface-3);
+}
+
+.sn-btn-secondary:disabled,
+.sn-btn-secondary[aria-disabled="true"] {
+  background-color: var(--sn-components-surface-1);
+  color: var(--sn-text-disabled-main);
+  border-color: var(--sn-border-color-2);
+}
+
+/* ── Text: Primary ─────────────────────────────────────────── */
+
+.sn-btn-text {
+  background-color: transparent;
+  color: var(--sn-text-brand-action-main);
+  font-weight: 600;
+}
+
+.sn-btn-text:hover {
+  color: var(--sn-text-brand-action-visited);
+}
+
+.sn-btn-text:disabled,
+.sn-btn-text[aria-disabled="true"] {
+  color: var(--sn-text-disabled-main);
+}
+
+/* ── Text: Secondary ───────────────────────────────────────── */
+
+.sn-btn-text-secondary {
+  background-color: transparent;
+  color: var(--sn-text-1);
+  font-weight: 600;
+}
+
+.sn-btn-text-secondary:hover {
+  color: var(--sn-text-2);
+}
+
+.sn-btn-text-secondary:disabled,
+.sn-btn-text-secondary[aria-disabled="true"] {
+  color: var(--sn-text-disabled-main);
+}

@@ -430,6 +430,94 @@ CSS var pattern: `--sn-components-{component}-{property}-{variant}`
 
 ---
 
+## Canonical Components
+
+Pre-built, design-vetted components in `components/`. Always use these instead of building from scratch.
+
+### Button — `components/button/button.css`
+
+```html
+<!-- Always needs: sn-btn + one variant class -->
+<button class="sn-btn sn-btn-primary">Label</button>
+<button class="sn-btn sn-btn-secondary">Label</button>
+<button class="sn-btn sn-btn-text">Label</button>
+<button class="sn-btn sn-btn-text-secondary">Label</button>
+
+<!-- Size modifiers (default is lg = 48px) -->
+<button class="sn-btn sn-btn-primary sn-btn-md">Label</button>
+<button class="sn-btn sn-btn-primary sn-btn-sm">Label</button>
+
+<!-- Works on <a> tags too -->
+<a class="sn-btn sn-btn-primary" href="…">Label</a>
+
+<!-- Disabled -->
+<button class="sn-btn sn-btn-primary" disabled>Label</button>
+```
+
+| Class | Style | Use for |
+|---|---|---|
+| `sn-btn-primary` | Contained, pink fill | CTAs, primary actions |
+| `sn-btn-secondary` | Contained, white + gray border | Secondary actions |
+| `sn-btn-text` | Transparent, pink semibold text | Tertiary / inline actions |
+| `sn-btn-text-secondary` | Transparent, dark semibold text | Neutral inline actions |
+| `sn-btn-md` | 40px height | Medium size |
+| `sn-btn-sm` | 32px height | Small size |
+
+Note: Contained buttons use `font-weight: 400`; text buttons use `font-weight: 600` — this is intentional per design.
+
+---
+
+### Chip — `components/chip/chip.css`
+
+```html
+<!-- Default (gray) chip — use on white/light backgrounds -->
+<button class="sn-chip sn-chip-gray">Label</button>
+
+<!-- White chip — use on gray/colored backgrounds -->
+<button class="sn-chip sn-chip-white">Label</button>
+
+<!-- Active/selected state (toggle with JS) -->
+<button class="sn-chip sn-chip-gray sn-chip--active" aria-selected="true">Label</button>
+
+<!-- Disabled -->
+<button class="sn-chip sn-chip-gray" aria-disabled="true">Label</button>
+```
+
+| State | Token | Value |
+|---|---|---|
+| Default bg (gray) | `--sn-surface-4` | `#EDEEEF` |
+| Active bg | `--sn-components-chip-surface-active-default` | `#FFDAEC` |
+| Active text | `--sn-text-brand-dark` | `#1D732E` (seafoam green on light pink — intentional brand pairing) |
+| Active hover bg | `--sn-components-chip-surface-active-hover` | `#FFB5D9` |
+
+Max-width is enforced at 240px. Icons inside a chip inherit `currentColor` automatically.
+
+---
+
+### Badge — `components/badge/badge.css`
+
+```html
+<span class="sn-badge sn-badge-brand">Design</span>
+<span class="sn-badge sn-badge-success">Shipped</span>
+<span class="sn-badge sn-badge-warning">In review</span>
+<span class="sn-badge sn-badge-error">Blocked</span>
+<span class="sn-badge sn-badge-neutral">Draft</span>
+<span class="sn-badge sn-badge-dark">Beta</span>
+```
+
+| Class | Background | Border | Use for |
+|---|---|---|---|
+| `sn-badge-brand` | `--sn-surface-brand-2` | `--sn-border-color-brand-1` | Brand / category tags |
+| `sn-badge-success` | `--sn-surface-state-success-1` | `--sn-border-color-state-success-action` | Success, completed |
+| `sn-badge-warning` | `--sn-surface-state-warning-1` | `--sn-border-color-state-warning-action` | In progress, pending |
+| `sn-badge-error` | `--sn-surface-state-error-1` | `--sn-border-color-state-error-action` | Error, blocked |
+| `sn-badge-neutral` | `--sn-surface-4` | `--sn-border-color-2` | Neutral, draft |
+| `sn-badge-dark` | `--sn-surface-invert-main` | — | Inverted, high-contrast |
+
+Typography is always `label/xs/semibold` (10px, 600, uppercase, 0.2px letter-spacing) — do not override.
+
+---
+
 ## Rules for Claude
 
 1. **Never hardcode a hex value.** Always use a Supernova token.
