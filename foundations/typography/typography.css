@@ -1,0 +1,84 @@
+/* =============================================================
+   Supernova Typography
+   Source: Figma text styles (supernova-design-system)
+   Font: Public Sans — load before using these classes:
+     https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&display=swap
+   ============================================================= */
+
+/* ── Headers ──────────────────────────────────────────────────
+   Family: --sn-font-family-header (Public Sans)
+   Line-height: 1.6 (relative, scales with size)
+   Sizes: XL (32px), L (24px), M (20px), S (18px)
+   Weights: regular (400), semibold (600), black (800)
+   ──────────────────────────────────────────────────────────── */
+
+.sn-header-xl-regular  { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 32px; font-weight: 400; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-xl-semibold { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 32px; font-weight: 600; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-xl-black    { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 32px; font-weight: 800; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+
+.sn-header-lg-regular  { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 24px; font-weight: 400; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-lg-semibold { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 24px; font-weight: 600; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-lg-black    { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 24px; font-weight: 800; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+
+.sn-header-md-regular  { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 20px; font-weight: 400; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-md-semibold { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 20px; font-weight: 600; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-md-black    { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 20px; font-weight: 800; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+
+.sn-header-sm-regular  { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 18px; font-weight: 400; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-sm-semibold { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 18px; font-weight: 600; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-sm-black    { font-family: var(--sn-font-family-header, 'Public Sans', sans-serif); font-size: 18px; font-weight: 800; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+
+
+/* ── Text ─────────────────────────────────────────────────────
+   Family: --sn-font-family-body (Public Sans)
+   Use for: UI text, interactive elements, short strings
+   Sizes: L (16/24), M (14/20), S (12/18)
+   Weights: regular (400), semibold (600)
+   ──────────────────────────────────────────────────────────── */
+
+.sn-text-lg-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: 0; font-style: normal; }
+.sn-text-lg-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 16px; font-weight: 600; line-height: 24px; letter-spacing: 0; font-style: normal; }
+
+.sn-text-md-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: 0; font-style: normal; }
+.sn-text-md-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: 0; font-style: normal; }
+
+.sn-text-sm-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 12px; font-weight: 400; line-height: 18px; letter-spacing: 0; font-style: normal; }
+.sn-text-sm-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 12px; font-weight: 600; line-height: 18px; letter-spacing: 0; font-style: normal; }
+
+
+/* ── Paragraph ────────────────────────────────────────────────
+   Family: --sn-font-family-body (Public Sans)
+   Use for: body copy, long-form reading content
+   Same size + line-height as Text — distinction is semantic.
+   Weights: regular (400), semibold (600)
+   ──────────────────────────────────────────────────────────── */
+
+.sn-paragraph-lg-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: 0; font-style: normal; }
+.sn-paragraph-lg-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 16px; font-weight: 600; line-height: 24px; letter-spacing: 0; font-style: normal; }
+
+.sn-paragraph-md-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: 0; font-style: normal; }
+.sn-paragraph-md-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: 0; font-style: normal; }
+
+.sn-paragraph-sm-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 12px; font-weight: 400; line-height: 18px; letter-spacing: 0; font-style: normal; }
+.sn-paragraph-sm-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 12px; font-weight: 600; line-height: 18px; letter-spacing: 0; font-style: normal; }
+
+
+/* ── Labels ───────────────────────────────────────────────────
+   Family: --sn-font-family-body (Public Sans)
+   Use for: button text, form labels, UI chrome, metadata
+   Line-height equals font-size (tight, single-line)
+   Sizes: L (16), M (14), S (12), XS (10 — semibold only)
+   Weights: regular (400), semibold (600)
+   ──────────────────────────────────────────────────────────── */
+
+.sn-label-lg-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 16px; font-weight: 400; line-height: 16px; letter-spacing: 0; font-style: normal; }
+.sn-label-lg-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 16px; font-weight: 600; line-height: 16px; letter-spacing: 0; font-style: normal; }
+
+.sn-label-md-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 14px; font-weight: 400; line-height: 14px; letter-spacing: 0; font-style: normal; }
+.sn-label-md-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 14px; font-weight: 600; line-height: 14px; letter-spacing: 0; font-style: normal; }
+
+.sn-label-sm-regular  { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 12px; font-weight: 400; line-height: 12px; letter-spacing: 0; font-style: normal; }
+.sn-label-sm-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 12px; font-weight: 600; line-height: 12px; letter-spacing: 0; font-style: normal; }
+
+/* XS label: semibold only, all-caps, subtle letter-spacing */
+.sn-label-xs-semibold { font-family: var(--sn-font-family-body, 'Public Sans', sans-serif); font-size: 10px; font-weight: 600; line-height: 10px; letter-spacing: 0.2px; text-transform: uppercase; font-style: normal; }

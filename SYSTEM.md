@@ -224,19 +224,82 @@ Spacing uses T-shirt size names. All values are in px.
 ### Typography tokens
 
 Font family: **Public Sans** for both headers and body.
+Load it before using any type styles:
+```html
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+```
 
-| Token | Value |
-|---|---|
-| `font/family/header` | Public Sans |
-| `font/family/body` | Public Sans |
-| `font/weight/regular` | Regular (400) |
-| `font/weight/semibold` | SemiBold (600) |
+| Token | CSS var | Value |
+|---|---|---|
+| `font/family/header` | `--sn-font-family-header` | Public Sans |
+| `font/family/body` | `--sn-font-family-body` | Public Sans |
+| `font/weight/regular` | `--sn-font-weight-regular` | 400 |
+| `font/weight/semibold` | `--sn-font-weight-semibold` | 600 |
 
-Font sizes: 10, 12, 14, 16, 18, 20, 24, 32px
+Font sizes (CSS vars from `tokens.primitives.css`): `--sn-font-size-{10|12|14|16|18|20|24|32}`
 
-Line heights: 10, 12, 14, 16, 18, 20, 24, 28, 30, 36, 48px
+Line heights: `--sn-font-line-height-{10|12|14|16|18|20|24|28|30|36|48}`
 
-Paragraph spacing: 18, 20, 24px
+---
+
+### Typography style classes
+
+Source: `foundations/typography/typography.css`
+
+Class naming pattern: `.sn-{category}-{size}-{weight}`
+
+#### Headers — `font/family/header`, `line-height: 1.6`
+
+| Class | Size | Weight |
+|---|---|---|
+| `.sn-header-xl-regular` | 32px | 400 |
+| `.sn-header-xl-semibold` | 32px | 600 |
+| `.sn-header-xl-black` | 32px | 800 |
+| `.sn-header-lg-regular` | 24px | 400 |
+| `.sn-header-lg-semibold` | 24px | 600 |
+| `.sn-header-lg-black` | 24px | 800 |
+| `.sn-header-md-regular` | 20px | 400 |
+| `.sn-header-md-semibold` | 20px | 600 |
+| `.sn-header-md-black` | 20px | 800 |
+| `.sn-header-sm-regular` | 18px | 400 |
+| `.sn-header-sm-semibold` | 18px | 600 |
+| `.sn-header-sm-black` | 18px | 800 |
+
+#### Text — `font/family/body`, for UI text and short strings
+
+| Class | Size | Line-height | Weight |
+|---|---|---|---|
+| `.sn-text-lg-regular` | 16px | 24px | 400 |
+| `.sn-text-lg-semibold` | 16px | 24px | 600 |
+| `.sn-text-md-regular` | 14px | 20px | 400 |
+| `.sn-text-md-semibold` | 14px | 20px | 600 |
+| `.sn-text-sm-regular` | 12px | 18px | 400 |
+| `.sn-text-sm-semibold` | 12px | 18px | 600 |
+
+#### Paragraph — `font/family/body`, for body copy and long-form content
+
+Same size + line-height as Text. The distinction is semantic — use `paragraph` for flowing prose, `text` for UI strings.
+
+| Class | Size | Line-height | Weight |
+|---|---|---|---|
+| `.sn-paragraph-lg-regular` | 16px | 24px | 400 |
+| `.sn-paragraph-lg-semibold` | 16px | 24px | 600 |
+| `.sn-paragraph-md-regular` | 14px | 20px | 400 |
+| `.sn-paragraph-md-semibold` | 14px | 20px | 600 |
+| `.sn-paragraph-sm-regular` | 12px | 18px | 400 |
+| `.sn-paragraph-sm-semibold` | 12px | 18px | 600 |
+
+#### Labels — `font/family/body`, tight line-height (= font size), for UI chrome
+
+| Class | Size | Line-height | Weight | Notes |
+|---|---|---|---|---|
+| `.sn-label-lg-regular` | 16px | 16px | 400 | |
+| `.sn-label-lg-semibold` | 16px | 16px | 600 | |
+| `.sn-label-md-regular` | 14px | 14px | 400 | |
+| `.sn-label-md-semibold` | 14px | 14px | 600 | |
+| `.sn-label-sm-regular` | 12px | 12px | 400 | |
+| `.sn-label-sm-semibold` | 12px | 12px | 600 | |
+| `.sn-label-xs-semibold` | 10px | 10px | 600 | All-caps, `letter-spacing: 0.2px`. No regular variant. |
 
 ---
 
