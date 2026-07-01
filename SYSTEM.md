@@ -223,16 +223,16 @@ Spacing uses T-shirt size names. All values are in px.
 
 ### Typography tokens
 
-Font family: **Public Sans** for both headers and body.
-Load it before using any type styles:
+Font families: **Karla** for headers, **Inter** for body/text/labels.
+Load both before using any type styles:
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 ```
 
 | Token | CSS var | Value |
 |---|---|---|
-| `font/family/header` | `--sn-font-family-header` | Public Sans |
-| `font/family/body` | `--sn-font-family-body` | Public Sans |
+| `font/family/header` | `--sn-font-family-header` | Karla |
+| `font/family/body` | `--sn-font-family-body` | Inter |
 | `font/weight/regular` | `--sn-font-weight-regular` | 400 |
 | `font/weight/semibold` | `--sn-font-weight-semibold` | 600 |
 
