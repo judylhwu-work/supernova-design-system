@@ -229,7 +229,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:623ad7ac253c0d9c883cda187a76cfd9d92cb70c/-1:-1",
-            "targetVariableName": "color/pink/40 (brand)",
+            "targetVariableName": "color/pink/40",
             "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
             "targetVariableSetName": "🦍 primitives"
           }
@@ -262,6 +262,32 @@
         }
       },
       "action": {
+        "main": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.800000011920929,
+              0.21568627655506134,
+              0.49803921580314636
+            ],
+            "alpha": 1,
+            "hex": "#CC377F"
+          },
+          "$description": "use this for actions or in components (e.g. links or buttons)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:2288:21259",
+            "com.figma.scopes": [
+              "TEXT_FILL"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:f973543d5585f44de7e60e2d641dc98f39ebcc1b/-1:-1",
+              "targetVariableName": "color/pink/70",
+              "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
+              "targetVariableSetName": "🦍 primitives"
+            }
+          }
+        },
         "visited": {
           "$type": "color",
           "$value": {
@@ -287,36 +313,36 @@
               "targetVariableSetName": "🦍 primitives"
             }
           }
-        },
-        "$root": {
-          "$type": "color",
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [
-              0.800000011920929,
-              0.21568627655506134,
-              0.49803921580314636
-            ],
-            "alpha": 1,
-            "hex": "#CC377F"
-          },
-          "$description": "use this for actions or in components (e.g. links or buttons)",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:2288:21259",
-            "com.figma.scopes": [
-              "TEXT_FILL"
-            ],
-            "com.figma.aliasData": {
-              "targetVariableId": "VariableID:f973543d5585f44de7e60e2d641dc98f39ebcc1b/-1:-1",
-              "targetVariableName": "color/pink/70 (brand)",
-              "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
-              "targetVariableSetName": "🦍 primitives"
-            }
-          }
         }
       }
     },
     "disabled": {
+      "main": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6117647290229797,
+            0.6274510025978088,
+            0.6509804129600525
+          ],
+          "alpha": 1,
+          "hex": "#9CA0A6"
+        },
+        "$description": "used for \"disabled\" text in components",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:2309:1967",
+          "com.figma.scopes": [
+            "TEXT_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:dc83c2300abd89bf8741627b0d42299ea495f295/-1:-1",
+            "targetVariableName": "color/gray/40",
+            "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
+            "targetVariableSetName": "🦍 primitives"
+          }
+        }
+      },
       "invert": {
         "$type": "color",
         "$value": {
@@ -338,32 +364,6 @@
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:bdade24749b9cf0adf430ffa9da425f71f1d8567/-1:-1",
             "targetVariableName": "color/gray/0",
-            "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
-            "targetVariableSetName": "🦍 primitives"
-          }
-        }
-      },
-      "$root": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.6117647290229797,
-            0.6274510025978088,
-            0.6509804129600525
-          ],
-          "alpha": 1,
-          "hex": "#9CA0A6"
-        },
-        "$description": "used for \"disabled\" text in components",
-        "$extensions": {
-          "com.figma.variableId": "VariableID:2309:1967",
-          "com.figma.scopes": [
-            "TEXT_FILL"
-          ],
-          "com.figma.aliasData": {
-            "targetVariableId": "VariableID:dc83c2300abd89bf8741627b0d42299ea495f295/-1:-1",
-            "targetVariableName": "color/gray/40",
             "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
             "targetVariableSetName": "🦍 primitives"
           }
@@ -1251,7 +1251,7 @@
           }
         }
       },
-      "$root": {
+      "main": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
@@ -1377,40 +1377,14 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:623ad7ac253c0d9c883cda187a76cfd9d92cb70c/-1:-1",
-            "targetVariableName": "color/pink/40 (brand)",
+            "targetVariableName": "color/pink/40",
             "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
             "targetVariableSetName": "🦍 primitives"
           }
         }
       },
       "action": {
-        "hover": {
-          "$type": "color",
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [
-              0.800000011920929,
-              0.21568627655506134,
-              0.49803921580314636
-            ],
-            "alpha": 1,
-            "hex": "#CC377F"
-          },
-          "$description": "use this for actions on hover or in components (e.g. primary buttons on hover)",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:2048:7782",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.aliasData": {
-              "targetVariableId": "VariableID:f973543d5585f44de7e60e2d641dc98f39ebcc1b/-1:-1",
-              "targetVariableName": "color/pink/70 (brand)",
-              "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
-              "targetVariableSetName": "🦍 primitives"
-            }
-          }
-        },
-        "$root": {
+        "main": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",
@@ -1431,6 +1405,32 @@
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:336df0c23a2a84535373ac2fc7af380b581e7a6b/-1:-1",
               "targetVariableName": "color/pink/60",
+              "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
+              "targetVariableSetName": "🦍 primitives"
+            }
+          }
+        },
+        "hover": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.800000011920929,
+              0.21568627655506134,
+              0.49803921580314636
+            ],
+            "alpha": 1,
+            "hex": "#CC377F"
+          },
+          "$description": "use this for actions on hover or in components (e.g. primary buttons on hover)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:2048:7782",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:f973543d5585f44de7e60e2d641dc98f39ebcc1b/-1:-1",
+              "targetVariableName": "color/pink/70",
               "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
               "targetVariableSetName": "🦍 primitives"
             }
@@ -2398,7 +2398,7 @@
             ],
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:623ad7ac253c0d9c883cda187a76cfd9d92cb70c/-1:-1",
-              "targetVariableName": "color/pink/40 (brand)",
+              "targetVariableName": "color/pink/40",
               "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
               "targetVariableSetName": "🦍 primitives"
             }
@@ -2473,7 +2473,7 @@
             ],
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:f973543d5585f44de7e60e2d641dc98f39ebcc1b/-1:-1",
-              "targetVariableName": "color/pink/70 (brand)",
+              "targetVariableName": "color/pink/70",
               "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
               "targetVariableSetName": "🦍 primitives"
             }
@@ -5145,7 +5145,7 @@
             ],
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:623ad7ac253c0d9c883cda187a76cfd9d92cb70c/-1:-1",
-              "targetVariableName": "color/pink/40 (brand)",
+              "targetVariableName": "color/pink/40",
               "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
               "targetVariableSetName": "🦍 primitives"
             }
@@ -5171,7 +5171,7 @@
             ],
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:f973543d5585f44de7e60e2d641dc98f39ebcc1b/-1:-1",
-              "targetVariableName": "color/pink/70 (brand)",
+              "targetVariableName": "color/pink/70",
               "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
               "targetVariableSetName": "🦍 primitives"
             }
@@ -5736,7 +5736,7 @@
       "state": {
         "action": {
           "$type": "color",
-          "$value": "{text.brand.action.$root}",
+          "$value": "{text.brand.action.main}",
           "$description": "used in banners and snackbars, where dark mode becomes elevation-medium",
           "$extensions": {
             "com.figma.variableId": "VariableID:4276:24385",

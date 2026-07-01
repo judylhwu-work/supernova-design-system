@@ -54,11 +54,11 @@ Always use a text token for any foreground color. Never use a raw color primitiv
 
 | Token | How to use |
 |---|---|
-| `text/action` | **Main action color.** Use for interactable text (links, CTAs). |
-| `text/action-visited` | Past action color — use for visited links. |
+| `text/brand/action/main` | **Main action color.** Use for interactable text (links, CTAs). |
+| `text/brand/action/visited` | Past action color — use for visited links. |
 | `text/empty` | "Empty" placeholder color for text. |
-| `text/disabled` | Disabled text. |
-| `text/disabled-invert` | Disabled text against dark backgrounds. |
+| `text/disabled/main` | Disabled text. |
+| `text/disabled/invert` | Disabled text against dark backgrounds. |
 
 #### Semantic state text
 
@@ -103,7 +103,7 @@ Always use a surface token for any background color. Never use a raw color primi
 | `surface/3` | Tertiary surface — use when a darker surface is needed. |
 | `surface/4` | Quaternary surface — use when an even darker surface is needed. |
 | `surface/5` | Quinary surface — darkest light gray; use when more emphasis is needed. |
-| `surface/invert` | Main inverted surface — use with light or dark text. |
+| `surface/invert/main` | Main inverted surface — use with light or dark text. |
 | `surface/invert/darker` | Darker inverted surface — use with light text. |
 | `surface/invert/darkest` | Darkest inverted surface — use with light text. |
 | `surface/white` | Always white, regardless of light or dark mode — use with dark text. |
@@ -121,8 +121,8 @@ Always use a surface token for any background color. Never use a raw color primi
 
 | Token | How to use |
 |---|---|
-| `surface/state/action` | **Main brand surface** — use for CTAs and primary action elements. |
-| `surface/state/action-hover` | Slightly darker brand surface — use for primary actions on hover. |
+| `surface/brand/action/main` | **Main brand surface** — use for CTAs and primary action elements. |
+| `surface/brand/action/hover` | Slightly darker brand surface — use for primary actions on hover. |
 | `surface/state/disabled` | Disabled surface — typically pair with light text. |
 
 #### Semantic state surfaces
