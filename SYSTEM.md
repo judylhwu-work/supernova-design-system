@@ -190,9 +190,9 @@ Rules:
 |---|---|---|
 | `radius/none` | 0 | Sharp corners. |
 | `radius/minimal` | 2px | Minimally rounded corners. |
-| `radius/less-rounded` | 4px | Slightly rounded corners. |
-| `radius/rounded` | 8px | Standard rounded corners. |
-| `radius/more-rounded` | 12px | More rounded — use for chips and pill-adjacent elements. |
+| `radius/less-rounded` | 8px | Slightly rounded corners. |
+| `radius/rounded` | 12px | Standard rounded corners. |
+| `radius/more-rounded` | 16px | More rounded — use for chips and pill-adjacent elements. |
 | `radius/full` | 360px | Fully rounded — use for badges, tags, and pill shapes. |
 
 ---
