@@ -303,13 +303,140 @@ Same size + line-height as Text. The distinction is semantic — use `paragraph`
 
 ---
 
+### Scale tokens
+
+Scale tokens expose the full raw color scales as CSS custom properties. Use them when the aliased semantic tokens don't have the specific shade you need — for decorative color, gradients, illustrations, or one-off UI moments that don't map cleanly to a semantic role.
+
+CSS var pattern: `--sn-scale-{group}-{color}-{step}`
+
+Steps run **10–100** (lightest to darkest) in all scales. Lower = lighter, higher = darker.
+
+#### Base scales
+
+| Group | CSS prefix | Colors |
+|---|---|---|
+| Brand (pink) | `--sn-scale-base-brand-{10–100}` | Primary brand pink scale |
+| Gray | `--sn-scale-base-gray-{0–100}` | Neutral gray scale (0 = white) |
+
+#### State scales
+
+| Group | CSS prefix |
+|---|---|
+| Success | `--sn-scale-state-success-{10–100}` |
+| Warning | `--sn-scale-state-warning-{10–100}` |
+| Error | `--sn-scale-state-error-{10–100}` |
+| Info | `--sn-scale-state-info-{10–100}` |
+
+#### Palette scales
+
+| Group | CSS prefix |
+|---|---|
+| Purple | `--sn-scale-palette-purple-{10–100}` |
+| Orange | `--sn-scale-palette-orange-{10–100}` |
+| Seafoam | `--sn-scale-palette-seafoam-{10–100}` |
+| Raspberry | `--sn-scale-palette-raspberry-{10–100}` |
+
+Rules:
+- **Prefer semantic tokens first.** Scale tokens are the escape hatch, not the default.
+- **Never use a scale token where a semantic token exists.** If `text/state/success/1` works, use it — not `--sn-scale-state-success-100`.
+- Steps 10–30 are light tints (pair with dark text). Steps 70–100 are dark shades (pair with light text). Step 60 is typically the "main" saturated value.
+
+---
+
+### Elevation tokens
+
+Elevation tokens define surface depth hierarchy for dark mode. In dark interfaces, elevation is expressed through lightness — higher surfaces are lighter, not darker.
+
+CSS var pattern: `--sn-elevation-{level}`
+
+| Token | CSS var | Hex | Use for |
+|---|---|---|---|
+| `elevation/none` | `--sn-elevation-none` | `#222328` | Base dark surface — page background |
+| `elevation/low` | `--sn-elevation-low` | `#333D4D` | Resting elements — cards, sidebars |
+| `elevation/low-medium` | `--sn-elevation-low-medium` | `#4D5563` | Resting elevated elements |
+| `elevation/medium` | `--sn-elevation-medium` | `#5D6573` | Interacted state surfaces |
+| `elevation/medium-high` | `--sn-elevation-medium-high` | `#6E7580` | Higher interacted surfaces |
+| `elevation/high` | `--sn-elevation-high` | `#848991` | Most elevated — modals, overlays, tooltips |
+
+Rules:
+- Elevation tokens are **dark mode surfaces**. The values are fixed dark grays — they don't flip between light/dark mode.
+- Use them for surfaces in dark contexts (dark sidebars, dark cards, dark overlays) where you need depth hierarchy.
+- In light mode, use `surface/1`–`surface/5` for the equivalent hierarchy.
+
+---
+
+### Component tokens
+
+Component tokens are pre-resolved color assignments for specific UI components. They exist so you don't have to figure out which semantic token maps to which component state — the answer is already in the token name.
+
+CSS var pattern: `--sn-components-{component}-{property}-{variant}`
+
+#### Surface
+
+| Token | CSS var | Use for |
+|---|---|---|
+| `components/surface/1` | `--sn-components-surface-1` | Secondary buttons, dropdown buttons, inputs — resting state |
+
+#### Text (state, for banners and snackbars)
+
+| Token | CSS var |
+|---|---|
+| `components/text/state/action` | `--sn-components-text-state-action` |
+| `components/text/state/success` | `--sn-components-text-state-success` |
+| `components/text/state/warning` | `--sn-components-text-state-warning` |
+| `components/text/state/error` | `--sn-components-text-state-error` |
+| `components/text/state/info` | `--sn-components-text-state-info` |
+
+#### Badge surfaces
+
+| Token | CSS var |
+|---|---|
+| `components/badge/surface/yellow` | `--sn-components-badge-surface-yellow` |
+| `components/badge/surface/orange` | `--sn-components-badge-surface-orange` |
+
+#### Chip surfaces
+
+| Token | CSS var |
+|---|---|
+| `components/chip/surface/active/hover` | `--sn-components-chip-surface-active-hover` |
+| `components/chip/surface/active/default` | `--sn-components-chip-surface-active-default` |
+
+#### Date picker
+
+| Token | CSS var |
+|---|---|
+| `components/date-picker/surface/active` | `--sn-components-date-picker-surface-active` |
+| `components/date-picker/surface/gradient/start` | `--sn-components-date-picker-surface-gradient-start` |
+| `components/date-picker/surface/gradient/middle` | `--sn-components-date-picker-surface-gradient-middle` |
+| `components/date-picker/surface/gradient/end` | `--sn-components-date-picker-surface-gradient-end` |
+
+#### Dropdown
+
+| Token | CSS var |
+|---|---|
+| `components/dropdown/surface/menu` | `--sn-components-dropdown-surface-menu` |
+
+#### Selection controls (checkbox, radio)
+
+| Token | CSS var | Use for |
+|---|---|---|
+| `components/selection-controls/border/hover` | `--sn-components-selection-controls-border-hover` | Border on hover |
+| `components/selection-controls/border/disabled` | `--sn-components-selection-controls-border-disabled` | Border when disabled |
+| `components/selection-controls/border/default` | `--sn-components-selection-controls-border-default` | Border at rest |
+| `components/selection-controls/surface/on/disabled` | `--sn-components-selection-controls-surface-on-disabled` | Checked + disabled fill |
+| `components/selection-controls/surface/off/disabled` | `--sn-components-selection-controls-surface-off-disabled` | Unchecked + disabled fill |
+| `components/selection-controls/text/off` | `--sn-components-selection-controls-text-off` | Label text when unchecked |
+| `components/selection-controls/text/on/disabled` | `--sn-components-selection-controls-text-on-disabled` | Label text when checked + disabled |
+
+---
+
 ## Rules for Claude
 
 1. **Never hardcode a hex value.** Always use a Supernova token.
 2. **Text and surface always travel in pairs.** When choosing a text token, pick the matching surface contrast pairing (e.g. light surfaces → dark text tokens; `action` surfaces → `invert` text tokens).
 3. **Default to `/1` for the primary role.** `text/1`, `surface/1`, `border/color/1` are your go-to choices unless there's a specific reason to deviate.
 4. **Dark mode is built in.** Light/Dark token files handle mode switching automatically — never write separate dark-mode CSS for individual color values.
-5. **Use semantic tokens, not primitives.** Use `text/state/error/action` not `color/red/60` even if you know the value.
+5. **Use semantic tokens, not primitives.** Use `text/state/error/action` not `color/red/60` even if you know the value. Scale tokens (`--sn-scale-*`) are the permitted escape hatch when no semantic token fits — never reach for raw hex.
 6. **Focus states use `border/width/focus` (2px) + `border/color/brand/action`** unless the context is a state-specific element (error → `border/color/error/action`).
 7. **`text/white` and `text/black` are mode-invariant.** Use them when the color must not flip between light and dark modes.
 8. **`surface/white` is also mode-invariant.** Use it when the background must stay white in both modes.
