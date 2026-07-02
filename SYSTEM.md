@@ -249,7 +249,7 @@ Load both before using any type styles:
 
 Font sizes (CSS vars from `tokens.primitives.css`): `--sn-font-size-{10|12|14|16|18|20|24|32}`
 
-Line heights: `--sn-font-line-height-{10|12|14|16|18|20|24|28|30|36|48}`
+There are no standalone line-height primitives. Line-height is carried by the composite type tokens below. (Line-height will move to percentage values once Figma variables support them.)
 
 ### Composite type tokens
 
@@ -263,7 +263,7 @@ Composite tokens bundle weight + size + line-height + family into a single CSS `
 .sn-btn { font: var(--sn-type-label-lg-regular); }
 ```
 
-Source: `:root` block in `foundations/typography/typography.css`
+Source: `foundations/typography/type-tokens.css` → built to `dist/tokens.typography.css`. Consumers load `dist/tokens.typography.css` alongside the other token layers.
 
 Token pattern: `--sn-type-{category}-{size}-{weight}`
 

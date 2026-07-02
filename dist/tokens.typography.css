@@ -1,0 +1,58 @@
+/* =============================================================
+   Supernova — Composite Type Tokens
+   Source of truth for --sn-type-* tokens.
+
+   The build (npm run build) copies this file verbatim to
+   dist/tokens.typography.css so consumers can load it alongside
+   the other token layers. Edit here, never edit the dist copy.
+
+   Each token is a CSS `font` shorthand value:
+     font-weight  size/line-height  family
+
+   Use directly:            font: var(--sn-type-header-xl-semibold);
+   Or via utility classes:  see foundations/typography/typography.css
+
+   Requires dist/tokens.primitives.css (defines --sn-font-family-*).
+   ============================================================= */
+
+:root {
+  /* Header — Karla, 1.6 relative line-height */
+  --sn-type-header-xl-regular:  400 32px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-xl-semibold: 600 32px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-xl-black:    800 32px / 1.6 var(--sn-font-family-header);
+
+  --sn-type-header-lg-regular:  400 24px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-lg-semibold: 600 24px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-lg-black:    800 24px / 1.6 var(--sn-font-family-header);
+
+  --sn-type-header-md-regular:  400 20px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-md-semibold: 600 20px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-md-black:    800 20px / 1.6 var(--sn-font-family-header);
+
+  --sn-type-header-sm-regular:  400 18px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-sm-semibold: 600 18px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-sm-black:    800 18px / 1.6 var(--sn-font-family-header);
+
+  /* Text — Inter, absolute line-heights */
+  --sn-type-text-lg-regular:  400 16px / 24px var(--sn-font-family-body);
+  --sn-type-text-lg-semibold: 600 16px / 24px var(--sn-font-family-body);
+
+  --sn-type-text-md-regular:  400 14px / 20px var(--sn-font-family-body);
+  --sn-type-text-md-semibold: 600 14px / 20px var(--sn-font-family-body);
+
+  --sn-type-text-sm-regular:  400 12px / 18px var(--sn-font-family-body);
+  --sn-type-text-sm-semibold: 600 12px / 18px var(--sn-font-family-body);
+
+  /* Label — Inter, tight line-height (= font size) */
+  --sn-type-label-lg-regular:  400 16px / 16px var(--sn-font-family-body);
+  --sn-type-label-lg-semibold: 600 16px / 16px var(--sn-font-family-body);
+
+  --sn-type-label-md-regular:  400 14px / 14px var(--sn-font-family-body);
+  --sn-type-label-md-semibold: 600 14px / 14px var(--sn-font-family-body);
+
+  --sn-type-label-sm-regular:  400 12px / 12px var(--sn-font-family-body);
+  --sn-type-label-sm-semibold: 600 12px / 12px var(--sn-font-family-body);
+
+  /* label-xs has no line-height variant — semibold only */
+  --sn-type-label-xs-semibold: 600 10px / 10px var(--sn-font-family-body);
+}

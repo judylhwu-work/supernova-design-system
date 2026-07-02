@@ -44,10 +44,7 @@
 }
 
 .sn-selection-label {
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
+  font: var(--sn-type-text-md-regular);
   color: var(--sn-text-1);
 }
 

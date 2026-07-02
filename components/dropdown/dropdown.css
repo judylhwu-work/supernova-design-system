@@ -74,10 +74,7 @@
 .sn-select-value {
   flex: 1;
   min-width: 0;
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
+  font: var(--sn-type-text-md-regular);
   color: var(--sn-text-1);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -198,10 +195,7 @@
   border: none;
   outline: none;
   background: transparent;
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
+  font: var(--sn-type-label-md-regular);
   color: var(--sn-text-1);
 }
 
@@ -225,10 +219,7 @@
 
 .sn-dropdown-section-header {
   padding: var(--sn-spacing-xs) var(--sn-spacing-md);
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
+  font: var(--sn-type-label-md-regular);
   color: var(--sn-text-2);
   pointer-events: none;
 }
@@ -262,12 +253,14 @@
   color: var(--sn-text-1);
 }
 
+/* 14px / 16px — Figma-specified; no matching composite in the type scale,
+   so size/weight use primitives and line-height stays explicit. */
 .sn-dropdown-item-label {
   flex: 1;
   min-width: 0;
   font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--sn-font-size-14);
+  font-weight: var(--sn-font-weight-regular);
   line-height: 16px;
   color: var(--sn-text-1);
   overflow: hidden;
@@ -277,8 +270,8 @@
 .sn-dropdown-item-desc {
   display: block;
   font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--sn-font-size-14);
+  font-weight: var(--sn-font-weight-regular);
   line-height: 16px;
   color: var(--sn-text-3);
   overflow: hidden;
@@ -299,7 +292,7 @@
 .sn-dropdown-item--selected .sn-dropdown-item-label,
 .sn-dropdown-item[aria-selected="true"] .sn-dropdown-item-label {
   color: var(--sn-text-1);
-  font-weight: 600;
+  font-weight: var(--sn-font-weight-semibold);
 }
 
 .sn-dropdown-item--selected:hover,

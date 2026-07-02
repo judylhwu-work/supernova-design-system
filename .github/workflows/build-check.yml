@@ -1,0 +1,31 @@
+name: Build check
+
+# Axis A drift guard: ensures dist/ is always the exact output of the current
+# token source. Fails if someone edited foundations/ but forgot `npm run build`.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  dist-in-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Verify dist/ is in sync with source
+        run: |
+          if ! git diff --exit-code dist/; then
+            echo "::error::dist/ is out of sync with the token source. Run 'npm run build' and commit the result."
+            exit 1
+          fi

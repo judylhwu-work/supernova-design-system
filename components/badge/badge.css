@@ -21,10 +21,7 @@
   border-radius: var(--sn-radius-less-rounded);
   border: var(--sn-border-width-default) solid transparent;
   box-sizing: border-box;
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 10px;
+  font: var(--sn-type-label-xs-semibold);
   letter-spacing: 0.2px;
   text-transform: uppercase;
   white-space: nowrap;

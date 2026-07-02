@@ -1,5 +1,5 @@
 import StyleDictionary from 'style-dictionary';
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -92,6 +92,10 @@ await buildTokens(join(tmp, 'dark.json'),  'tokens.dark.css',  'css/variables', 
 
 // CSS custom properties — primitive tokens (font, spacing, radius, border-width, color scales)
 await buildTokens(join(tmp, 'primitives.json'), 'tokens.primitives.css', 'css/variables', cssTransforms, ':root');
+
+// Composite type tokens (--sn-type-*) — hand-authored CSS, copied verbatim to dist.
+// Not generated from Figma JSON: font shorthands (and % line-heights) aren't exportable yet.
+copyFileSync(join(__dir, 'foundations/typography/type-tokens.css'), join(__dir, 'dist/tokens.typography.css'));
 
 // Clean up temp files
 rmSync(tmp, { recursive: true });

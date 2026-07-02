@@ -35,10 +35,7 @@
 /* ── Label ────────────────────────────────────────────────── */
 
 .sn-field-label {
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
+  font: var(--sn-type-label-md-regular);
   color: var(--sn-text-1);
 }
 
@@ -55,10 +52,7 @@
   height: 32px;
   padding: var(--sn-spacing-2xs) var(--sn-spacing-xs);
   box-sizing: border-box;
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
+  font: var(--sn-type-text-md-regular);
   color: var(--sn-text-1);
   background: var(--sn-components-surface-1);
   border: var(--sn-border-width-default) solid var(--sn-border-color-3);
@@ -100,7 +94,6 @@
 .sn-input--textarea {
   height: auto;
   min-height: 80px;
-  line-height: 20px;
   resize: vertical;
 }
 
@@ -168,10 +161,7 @@
 /* ── Helper / validation text ─────────────────────────────── */
 
 .sn-field-helper {
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 12px;
+  font: var(--sn-type-label-sm-regular);
   color: var(--sn-text-3);
 }
 

@@ -25,7 +25,8 @@ supernova-design-system/
 ├── dist/              ← compiled output (committed, do not edit manually)
 │   ├── tokens.light.css
 │   ├── tokens.dark.css
-│   └── tokens.primitives.css
+│   ├── tokens.primitives.css
+│   └── tokens.typography.css   ← composite --sn-type-* tokens
 ├── build.mjs          ← Style Dictionary build script
 ├── SYSTEM.md          ← full token reference and system rules
 └── design-system.html ← visual component preview
@@ -41,10 +42,11 @@ Link the token and component CSS files directly — no install or build step req
 <head>
   <!-- Token layers — load in this order -->
   <link rel="stylesheet" href="../supernova-design-system/dist/tokens.primitives.css">
+  <link rel="stylesheet" href="../supernova-design-system/dist/tokens.typography.css">
   <link id="tokens-light" rel="stylesheet" href="../supernova-design-system/dist/tokens.light.css">
   <link id="tokens-dark"  rel="stylesheet" href="../supernova-design-system/dist/tokens.dark.css" disabled>
 
-  <!-- Typography foundation -->
+  <!-- Typography utility classes (optional — only if you use .sn-header-*, .sn-text-*, etc.) -->
   <link rel="stylesheet" href="../supernova-design-system/foundations/typography/typography.css">
 
   <!-- Components — include only what you use -->

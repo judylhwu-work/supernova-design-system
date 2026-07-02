@@ -23,10 +23,7 @@
   border: none;
   border-radius: var(--sn-radius-rounded);
   box-sizing: border-box;
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
+  font: var(--sn-type-label-lg-regular);
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
@@ -49,13 +46,13 @@
 .sn-btn-md {
   height: 40px;
   padding: 0 var(--sn-spacing-sm);
-  font-size: 14px;
+  font: var(--sn-type-label-md-regular);
 }
 
 .sn-btn-sm {
   height: 32px;
   padding: 0 var(--sn-spacing-sm);
-  font-size: 12px;
+  font: var(--sn-type-label-sm-regular);
 }
 
 /* ── Contained: Primary ────────────────────────────────────── */
@@ -100,7 +97,7 @@
 .sn-btn-text {
   background-color: transparent;
   color: var(--sn-text-brand-action-main);
-  font-weight: 600;
+  font-weight: var(--sn-font-weight-semibold);
 }
 
 .sn-btn-text:hover {
@@ -118,7 +115,7 @@
 .sn-btn-text-secondary {
   background-color: transparent;
   color: var(--sn-text-brand-green-dark);
-  font-weight: 600;
+  font-weight: var(--sn-font-weight-semibold);
 }
 
 .sn-btn-text-secondary:hover {
@@ -241,7 +238,7 @@
 .sn-btn-text-destructive {
   background-color: transparent;
   color: var(--sn-text-state-error-action);
-  font-weight: 600;
+  font-weight: var(--sn-font-weight-semibold);
 }
 
 .sn-btn-text-destructive:hover {

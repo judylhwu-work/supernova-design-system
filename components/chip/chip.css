@@ -27,10 +27,7 @@
   border: var(--sn-border-width-default) solid transparent;
   border-radius: var(--sn-radius-less-rounded);
   box-sizing: border-box;
-  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 12px;
+  font: var(--sn-type-label-sm-regular);
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
@@ -65,7 +62,7 @@
 .sn-chip-gray[aria-selected="true"] {
   background-color: var(--sn-components-chip-surface-active-default);
   color: var(--sn-text-black);
-  font-weight: 600;
+  font-weight: var(--sn-font-weight-semibold);
 }
 
 .sn-chip-gray.sn-chip--active:hover,
@@ -94,7 +91,7 @@
 .sn-chip-white[aria-selected="true"] {
   background-color: var(--sn-components-chip-surface-active-default);
   color: var(--sn-text-black);
-  font-weight: 600;
+  font-weight: var(--sn-font-weight-semibold);
 }
 
 .sn-chip-white.sn-chip--active:hover,
