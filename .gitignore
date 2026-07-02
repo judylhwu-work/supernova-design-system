@@ -5,8 +5,7 @@
 .vscode/
 .idea/
 
-# Build output
-dist/
+# Build output — dist/ is intentionally tracked for file-path and GitHub distribution
 build/
 node_modules/
 .build-tmp/

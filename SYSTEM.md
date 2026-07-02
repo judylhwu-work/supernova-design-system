@@ -108,22 +108,33 @@ Always use a surface token for any background color. Never use a raw color primi
 | `surface/invert/darkest` | Darkest inverted surface — use with light text. |
 | `surface/white` | Always white, regardless of light or dark mode — use with dark text. |
 
-#### Brand surfaces
+#### Brand surfaces — Pink
 
 | Token | How to use |
 |---|---|
-| `surface/brand/1` | Primary, lightest brand surface — use with dark text. |
-| `surface/brand/2` | Secondary brand surface — use with dark text. |
-| `surface/brand/3` | Tertiary brand surface — use with dark text. |
-| `surface/brand/logo` | Lighter main brand surface — use for logo backgrounds. |
+| `surface/brand/pink/1` | Primary, lightest pink surface — use with dark text. |
+| `surface/brand/pink/2` | Secondary pink surface — use with dark text. |
+| `surface/brand/pink/3` | Tertiary pink surface — use for hover states and accents. |
+| `surface/brand/pink/logo` | Lighter pink surface — use for logo backgrounds. |
+| `surface/brand/pink/action/main` | **Primary action surface** — use for CTAs and primary buttons. |
+| `surface/brand/pink/action/hover` | Darker pink hover — use when primary action hover is pink (not green). |
+
+#### Brand surfaces — Green
+
+| Token | How to use |
+|---|---|
+| `surface/brand/green/1` | Primary, lightest green surface — use with dark text. |
+| `surface/brand/green/2` | Secondary green surface — use with dark text. |
+| `surface/brand/green/3` | Tertiary green surface — use for hover states and accents. |
+| `surface/brand/green/logo` | Lighter green surface — use for logo backgrounds. |
+| `surface/brand/green/action/main` | Green action surface — use for secondary green CTAs. |
+| `surface/brand/green/action/hover` | **Primary button hover** — primary buttons transition to this green on hover. |
 
 #### State / interactive surfaces
 
 | Token | How to use |
 |---|---|
-| `surface/brand/action/main` | **Main brand surface** — use for CTAs and primary action elements. |
-| `surface/brand/action/hover` | Slightly darker brand surface — use for primary actions on hover. |
-| `surface/state/disabled` | Disabled surface — typically pair with light text. |
+| `surface/disabled` | Disabled surface — pair with `text/disabled/invert`. |
 
 #### Semantic state surfaces
 
@@ -239,6 +250,64 @@ Load both before using any type styles:
 Font sizes (CSS vars from `tokens.primitives.css`): `--sn-font-size-{10|12|14|16|18|20|24|32}`
 
 Line heights: `--sn-font-line-height-{10|12|14|16|18|20|24|28|30|36|48}`
+
+### Composite type tokens
+
+Composite tokens bundle weight + size + line-height + family into a single CSS `font` shorthand value. Use them anywhere you set typography — nothing hardcoded.
+
+```css
+/* Direct usage */
+.my-heading { font: var(--sn-type-header-xl-semibold); }
+
+/* In component CSS */
+.sn-btn { font: var(--sn-type-label-lg-regular); }
+```
+
+Source: `:root` block in `foundations/typography/typography.css`
+
+Token pattern: `--sn-type-{category}-{size}-{weight}`
+
+#### Header tokens (`--sn-type-header-*`)
+
+| Token | Size | Weight | Family |
+|---|---|---|---|
+| `--sn-type-header-xl-regular` | 32px / 1.6 | 400 | Karla |
+| `--sn-type-header-xl-semibold` | 32px / 1.6 | 600 | Karla |
+| `--sn-type-header-xl-black` | 32px / 1.6 | 800 | Karla |
+| `--sn-type-header-lg-regular` | 24px / 1.6 | 400 | Karla |
+| `--sn-type-header-lg-semibold` | 24px / 1.6 | 600 | Karla |
+| `--sn-type-header-lg-black` | 24px / 1.6 | 800 | Karla |
+| `--sn-type-header-md-regular` | 20px / 1.6 | 400 | Karla |
+| `--sn-type-header-md-semibold` | 20px / 1.6 | 600 | Karla |
+| `--sn-type-header-md-black` | 20px / 1.6 | 800 | Karla |
+| `--sn-type-header-sm-regular` | 18px / 1.6 | 400 | Karla |
+| `--sn-type-header-sm-semibold` | 18px / 1.6 | 600 | Karla |
+| `--sn-type-header-sm-black` | 18px / 1.6 | 800 | Karla |
+
+#### Text tokens (`--sn-type-text-*`)
+
+| Token | Size | Line-height | Weight | Family |
+|---|---|---|---|---|
+| `--sn-type-text-lg-regular` | 16px | 24px | 400 | Inter |
+| `--sn-type-text-lg-semibold` | 16px | 24px | 600 | Inter |
+| `--sn-type-text-md-regular` | 14px | 20px | 400 | Inter |
+| `--sn-type-text-md-semibold` | 14px | 20px | 600 | Inter |
+| `--sn-type-text-sm-regular` | 12px | 18px | 400 | Inter |
+| `--sn-type-text-sm-semibold` | 12px | 18px | 600 | Inter |
+
+Paragraph classes (`.sn-paragraph-*`) share the same composite tokens as their text equivalents.
+
+#### Label tokens (`--sn-type-label-*`)
+
+| Token | Size | Line-height | Weight | Family | Notes |
+|---|---|---|---|---|---|
+| `--sn-type-label-lg-regular` | 16px | 16px | 400 | Inter | |
+| `--sn-type-label-lg-semibold` | 16px | 16px | 600 | Inter | |
+| `--sn-type-label-md-regular` | 14px | 14px | 400 | Inter | |
+| `--sn-type-label-md-semibold` | 14px | 14px | 600 | Inter | |
+| `--sn-type-label-sm-regular` | 12px | 12px | 400 | Inter | |
+| `--sn-type-label-sm-semibold` | 12px | 12px | 600 | Inter | |
+| `--sn-type-label-xs-semibold` | 10px | 10px | 600 | Inter | Pair with `letter-spacing: 0.2px` and `text-transform: uppercase` — not in shorthand |
 
 ---
 
@@ -401,15 +470,6 @@ CSS var pattern: `--sn-components-{component}-{property}-{variant}`
 | `components/chip/surface/active/hover` | `--sn-components-chip-surface-active-hover` |
 | `components/chip/surface/active/default` | `--sn-components-chip-surface-active-default` |
 
-#### Date picker
-
-| Token | CSS var |
-|---|---|
-| `components/date-picker/surface/active` | `--sn-components-date-picker-surface-active` |
-| `components/date-picker/surface/gradient/start` | `--sn-components-date-picker-surface-gradient-start` |
-| `components/date-picker/surface/gradient/middle` | `--sn-components-date-picker-surface-gradient-middle` |
-| `components/date-picker/surface/gradient/end` | `--sn-components-date-picker-surface-gradient-end` |
-
 #### Dropdown
 
 | Token | CSS var |
@@ -430,91 +490,18 @@ CSS var pattern: `--sn-components-{component}-{property}-{variant}`
 
 ---
 
-## Canonical Components
+## Components
 
-Pre-built, design-vetted components in `components/`. Always use these instead of building from scratch.
+Pre-built, design-vetted components in `components/`. Always use these instead of building from scratch. Each component has its own CSS file and a co-located `.md` with full usage docs and token reference.
 
-### Button — `components/button/button.css`
-
-```html
-<!-- Always needs: sn-btn + one variant class -->
-<button class="sn-btn sn-btn-primary">Label</button>
-<button class="sn-btn sn-btn-secondary">Label</button>
-<button class="sn-btn sn-btn-text">Label</button>
-<button class="sn-btn sn-btn-text-secondary">Label</button>
-
-<!-- Size modifiers (default is lg = 48px) -->
-<button class="sn-btn sn-btn-primary sn-btn-md">Label</button>
-<button class="sn-btn sn-btn-primary sn-btn-sm">Label</button>
-
-<!-- Works on <a> tags too -->
-<a class="sn-btn sn-btn-primary" href="…">Label</a>
-
-<!-- Disabled -->
-<button class="sn-btn sn-btn-primary" disabled>Label</button>
-```
-
-| Class | Style | Use for |
+| Component | CSS | Docs |
 |---|---|---|
-| `sn-btn-primary` | Contained, pink fill | CTAs, primary actions |
-| `sn-btn-secondary` | Contained, white + gray border | Secondary actions |
-| `sn-btn-text` | Transparent, pink semibold text | Tertiary / inline actions |
-| `sn-btn-text-secondary` | Transparent, dark semibold text | Neutral inline actions |
-| `sn-btn-md` | 40px height | Medium size |
-| `sn-btn-sm` | 32px height | Small size |
-
-Note: Contained buttons use `font-weight: 400`; text buttons use `font-weight: 600` — this is intentional per design.
-
----
-
-### Chip — `components/chip/chip.css`
-
-```html
-<!-- Default (gray) chip — use on white/light backgrounds -->
-<button class="sn-chip sn-chip-gray">Label</button>
-
-<!-- White chip — use on gray/colored backgrounds -->
-<button class="sn-chip sn-chip-white">Label</button>
-
-<!-- Active/selected state (toggle with JS) -->
-<button class="sn-chip sn-chip-gray sn-chip--active" aria-selected="true">Label</button>
-
-<!-- Disabled -->
-<button class="sn-chip sn-chip-gray" aria-disabled="true">Label</button>
-```
-
-| State | Token | Value |
-|---|---|---|
-| Default bg (gray) | `--sn-surface-4` | `#EDEEEF` |
-| Active bg | `--sn-components-chip-surface-active-default` | `#FFDAEC` |
-| Active text | `--sn-text-brand-dark` | `#1D732E` (seafoam green on light pink — intentional brand pairing) |
-| Active hover bg | `--sn-components-chip-surface-active-hover` | `#FFB5D9` |
-
-Max-width is enforced at 240px. Icons inside a chip inherit `currentColor` automatically.
-
----
-
-### Badge — `components/badge/badge.css`
-
-```html
-<span class="sn-badge sn-badge-brand">Design</span>
-<span class="sn-badge sn-badge-success">Shipped</span>
-<span class="sn-badge sn-badge-warning">In review</span>
-<span class="sn-badge sn-badge-error">Blocked</span>
-<span class="sn-badge sn-badge-neutral">Draft</span>
-<span class="sn-badge sn-badge-dark">Beta</span>
-```
-
-| Class | Background | Border | Use for |
-|---|---|---|---|
-| `sn-badge-brand` | `--sn-surface-brand-2` | `--sn-border-color-brand-1` | Brand / category tags |
-| `sn-badge-success` | `--sn-surface-state-success-1` | `--sn-border-color-state-success-action` | Success, completed |
-| `sn-badge-warning` | `--sn-surface-state-warning-1` | `--sn-border-color-state-warning-action` | In progress, pending |
-| `sn-badge-error` | `--sn-surface-state-error-1` | `--sn-border-color-state-error-action` | Error, blocked |
-| `sn-badge-neutral` | `--sn-surface-4` | `--sn-border-color-2` | Neutral, draft |
-| `sn-badge-dark` | `--sn-surface-invert-main` | — | Inverted, high-contrast |
-
-Typography is always `label/xs/semibold` (10px, 600, uppercase, 0.2px letter-spacing) — do not override.
+| Button + Icon Button | `components/button/button.css` | `components/button/button.md` |
+| Chip + Chip Group | `components/chip/chip.css` | `components/chip/chip.md` |
+| Badge | `components/badge/badge.css` | `components/badge/badge.md` |
+| Input / Field | `components/input/input.css` | `components/input/input.md` |
+| Selection Controls | `components/selection-controls/selection-controls.css` | `components/selection-controls/selection-controls.md` |
+| Dropdown | `components/dropdown/dropdown.css` | `components/dropdown/dropdown.md` |
 
 ---
 

@@ -20,12 +20,12 @@
 .sn-chip {
   display: inline-flex;
   align-items: center;
-  gap: var(--sn-spacing-4);
+  gap: var(--sn-spacing-3xs);
   height: 24px;
   max-width: 240px;
-  padding: 0 var(--sn-spacing-8);
-  border: none;
-  border-radius: var(--sn-radius-12);
+  padding: 0 var(--sn-spacing-xs);
+  border: var(--sn-border-width-default) solid transparent;
+  border-radius: var(--sn-radius-less-rounded);
   box-sizing: border-box;
   font-family: var(--sn-font-family-body, 'Inter', sans-serif);
   font-size: 12px;
@@ -35,12 +35,13 @@
   text-decoration: none;
   cursor: pointer;
   user-select: none;
-  transition: background-color 150ms ease, color 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
 }
 
 .sn-chip:focus-visible {
-  outline: var(--sn-border-width-focus) solid var(--sn-border-color-brand-action);
-  outline-offset: 2px;
+  outline: none;
+  border-width: var(--sn-border-width-focus);
+  border-color: var(--sn-border-color-brand-action);
 }
 
 .sn-chip:disabled,
@@ -52,18 +53,18 @@
 /* ── Gray — use on white / light surfaces ──────────────────── */
 
 .sn-chip-gray {
-  background-color: var(--sn-surface-4);
+  background-color: var(--sn-surface-2);
   color: var(--sn-text-1);
 }
 
 .sn-chip-gray:hover {
-  background-color: var(--sn-surface-5);
+  background-color: var(--sn-surface-3);
 }
 
 .sn-chip-gray.sn-chip--active,
 .sn-chip-gray[aria-selected="true"] {
   background-color: var(--sn-components-chip-surface-active-default);
-  color: var(--sn-text-brand-dark);
+  color: var(--sn-text-black);
   font-weight: 600;
 }
 
@@ -74,8 +75,8 @@
 
 .sn-chip-gray:disabled,
 .sn-chip-gray[aria-disabled="true"] {
-  background-color: var(--sn-surface-4);
-  color: var(--sn-text-disabled-main);
+  background-color: var(--sn-surface-disabled);
+  color: var(--sn-text-disabled-invert);
 }
 
 /* ── White — use on gray / colored surfaces ────────────────── */
@@ -86,13 +87,13 @@
 }
 
 .sn-chip-white:hover {
-  background-color: var(--sn-surface-3);
+  background-color: var(--sn-surface-2);
 }
 
 .sn-chip-white.sn-chip--active,
 .sn-chip-white[aria-selected="true"] {
   background-color: var(--sn-components-chip-surface-active-default);
-  color: var(--sn-text-brand-dark);
+  color: var(--sn-text-black);
   font-weight: 600;
 }
 
@@ -103,6 +104,45 @@
 
 .sn-chip-white:disabled,
 .sn-chip-white[aria-disabled="true"] {
+  background-color: var(--sn-surface-disabled);
+  color: var(--sn-text-disabled-invert);
+}
+
+/* ── Chip Group ─────────────────────────────────────────────── */
+/*
+   Usage:
+     <div class="sn-chip-group" role="group" aria-label="Filter">
+       <button class="sn-chip sn-chip-gray sn-chip--active" aria-selected="true">All</button>
+       <button class="sn-chip sn-chip-gray">Recent</button>
+       <div class="sn-chip-group-divider" role="separator"></div>
+       <button class="sn-chip sn-chip-gray">Saved</button>
+     </div>
+
+   Variants: default (gray bg) | sn-chip-group-white (white bg)
+   Chips:    use sn-chip-gray inside default group, sn-chip-white inside group-white
+   Disabled: add sn-chip-group--disabled to the container + disabled attr on each chip
+*/
+
+.sn-chip-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sn-spacing-3xs);
+  padding: var(--sn-spacing-3xs);
+  border-radius: var(--sn-radius-rounded);
+  background-color: var(--sn-surface-3);
+}
+
+.sn-chip-group-white {
   background-color: var(--sn-surface-1);
-  color: var(--sn-text-disabled-main);
+}
+
+.sn-chip-group-divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 24px;
+  background-color: var(--sn-surface-disabled);
+}
+
+.sn-chip-group-white .sn-chip-group-divider {
+  background-color: var(--sn-surface-5);
 }

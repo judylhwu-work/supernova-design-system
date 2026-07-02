@@ -58,7 +58,7 @@ StyleDictionary.registerTransform({
 mkdirSync(tmp, { recursive: true });
 mkdirSync(join(__dir, 'dist'), { recursive: true });
 
-for (const name of ['value', 'light', 'dark']) {
+for (const name of ['primitives', 'light', 'dark']) {
   const raw = JSON.parse(readFileSync(join(__dir, `foundations/tokens/${name}.tokens.json`)));
   writeFileSync(join(tmp, `${name}.json`), JSON.stringify(clean(raw)));
 }
@@ -91,12 +91,28 @@ await buildTokens(join(tmp, 'light.json'), 'tokens.light.css', 'css/variables', 
 await buildTokens(join(tmp, 'dark.json'),  'tokens.dark.css',  'css/variables', cssTransforms, ':root');
 
 // CSS custom properties — primitive tokens (font, spacing, radius, border-width, color scales)
-await buildTokens(join(tmp, 'value.json'), 'tokens.primitives.css', 'css/variables', cssTransforms, ':root');
-
-// JS module — primitives only (for non-CSS contexts like the Phaser game)
-await buildTokens(join(tmp, 'value.json'), 'tokens.js', 'javascript/es6', ['name/camel']);
+await buildTokens(join(tmp, 'primitives.json'), 'tokens.primitives.css', 'css/variables', cssTransforms, ':root');
 
 // Clean up temp files
 rmSync(tmp, { recursive: true });
 
 console.log('Supernova tokens built → dist/');
+
+// ── JS module build (opt-in) ────────────────────────────────
+// Run via: npm run build:js
+// Outputs dist/tokens.js — camelCase named ES6 exports of primitive tokens.
+// Intended for non-CSS consumers (e.g. a Phaser game that needs token values at runtime).
+// Not included in the default build to keep the primary output CSS-focused.
+export async function buildJS() {
+  mkdirSync(tmp, { recursive: true });
+  mkdirSync(join(__dir, 'dist'), { recursive: true });
+  const raw = JSON.parse(readFileSync(join(__dir, 'foundations/tokens/primitives.tokens.json')));
+  writeFileSync(join(tmp, 'primitives.json'), JSON.stringify(clean(raw)));
+  await buildTokens(join(tmp, 'primitives.json'), 'tokens.js', 'javascript/es6', ['name/camel']);
+  rmSync(tmp, { recursive: true });
+  console.log('Supernova JS tokens built → dist/tokens.js');
+}
+
+if (process.argv[2] === '--js') {
+  await buildJS();
+}

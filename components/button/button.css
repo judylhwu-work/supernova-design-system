@@ -17,11 +17,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--sn-spacing-8);
+  gap: var(--sn-spacing-xs);
   height: 48px;
-  padding: 0 var(--sn-spacing-16);
+  padding: 0 var(--sn-spacing-md);
   border: none;
-  border-radius: var(--sn-radius-12);
+  border-radius: var(--sn-radius-rounded);
   box-sizing: border-box;
   font-family: var(--sn-font-family-body, 'Inter', sans-serif);
   font-size: 16px;
@@ -48,25 +48,25 @@
 
 .sn-btn-md {
   height: 40px;
-  padding: 0 var(--sn-spacing-12);
+  padding: 0 var(--sn-spacing-sm);
   font-size: 14px;
 }
 
 .sn-btn-sm {
   height: 32px;
-  padding: 0 var(--sn-spacing-12);
+  padding: 0 var(--sn-spacing-sm);
   font-size: 12px;
 }
 
 /* ── Contained: Primary ────────────────────────────────────── */
 
 .sn-btn-primary {
-  background-color: var(--sn-surface-brand-action-main);
-  color: var(--sn-text-white);
+  background-color: var(--sn-surface-brand-pink-action-main);
+  color: var(--sn-text-invert);
 }
 
 .sn-btn-primary:hover {
-  background-color: var(--sn-surface-brand-action-hover);
+  background-color: var(--sn-surface-brand-green-action-hover);
 }
 
 .sn-btn-primary:disabled,
@@ -78,13 +78,14 @@
 /* ── Contained: Secondary ──────────────────────────────────── */
 
 .sn-btn-secondary {
-  background-color: var(--sn-components-surface-1);
-  color: var(--sn-text-1);
-  border: var(--sn-border-width-default) solid var(--sn-border-color-3);
+  background-color: transparent;
+  color: var(--sn-text-brand-pink-dark);
+  border: var(--sn-border-width-default) solid var(--sn-border-color-brand-1);
 }
 
 .sn-btn-secondary:hover {
-  background-color: var(--sn-surface-3);
+  background-color: var(--sn-surface-brand-pink-2);
+  color: var(--sn-components-text-brand-pink-dark);
 }
 
 .sn-btn-secondary:disabled,
@@ -103,7 +104,8 @@
 }
 
 .sn-btn-text:hover {
-  color: var(--sn-text-brand-action-visited);
+  background-color: var(--sn-surface-brand-pink-2);
+  color: var(--sn-components-text-brand-pink-dark);
 }
 
 .sn-btn-text:disabled,
@@ -115,15 +117,155 @@
 
 .sn-btn-text-secondary {
   background-color: transparent;
-  color: var(--sn-text-1);
+  color: var(--sn-text-brand-green-dark);
   font-weight: 600;
 }
 
 .sn-btn-text-secondary:hover {
-  color: var(--sn-text-2);
+  background-color: var(--sn-surface-brand-green-2);
+  color: var(--sn-components-text-brand-green-dark);
 }
 
 .sn-btn-text-secondary:disabled,
 .sn-btn-text-secondary[aria-disabled="true"] {
+  color: var(--sn-text-disabled-main);
+}
+
+/* ── Icon Button ───────────────────────────────────────────── */
+/*
+   Usage:
+     <button class="sn-btn-icon sn-btn-icon-primary" aria-label="Delete">
+       <svg width="16" height="16">…</svg>
+     </button>
+
+   Variants:  sn-btn-icon-primary | sn-btn-icon-secondary
+   Sizes:     default = lg (48px) | sn-btn-icon-md (40px) | sn-btn-icon-sm (32px)
+*/
+
+.sn-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: var(--sn-radius-full);
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.sn-btn-icon:focus-visible {
+  outline: var(--sn-border-width-focus) solid var(--sn-border-color-brand-action);
+  outline-offset: 2px;
+}
+
+.sn-btn-icon:disabled,
+.sn-btn-icon[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.sn-btn-icon-md { width: 40px; height: 40px; }
+.sn-btn-icon-sm { width: 32px; height: 32px; }
+
+.sn-btn-icon-primary {
+  color: var(--sn-text-brand-action-main);
+}
+
+.sn-btn-icon-primary:hover {
+  background-color: var(--sn-surface-brand-pink-1);
+  color: var(--sn-components-text-brand-pink-dark);
+}
+
+.sn-btn-icon-primary:disabled,
+.sn-btn-icon-primary[aria-disabled="true"] {
+  color: var(--sn-text-disabled-main);
+}
+
+.sn-btn-icon-secondary {
+  color: var(--sn-text-brand-green-dark);
+}
+
+.sn-btn-icon-secondary:hover {
+  background-color: var(--sn-surface-brand-green-2);
+  color: var(--sn-components-text-brand-green-dark);
+}
+
+.sn-btn-icon-secondary:disabled,
+.sn-btn-icon-secondary[aria-disabled="true"] {
+  color: var(--sn-text-disabled-main);
+}
+
+/* ── Contained: Destructive ─────────────────────────────────── */
+
+.sn-btn-destructive {
+  background-color: var(--sn-surface-state-error-action);
+  color: var(--sn-text-invert);
+}
+
+.sn-btn-destructive:hover {
+  background-color: var(--sn-surface-state-error-action-hover);
+}
+
+.sn-btn-destructive:disabled,
+.sn-btn-destructive[aria-disabled="true"] {
+  background-color: var(--sn-surface-disabled);
+  color: var(--sn-text-disabled-invert);
+}
+
+/* ── Contained: Secondary-Destructive ───────────────────────── */
+
+.sn-btn-secondary-destructive {
+  background-color: transparent;
+  color: var(--sn-text-state-error-action);
+  border: var(--sn-border-width-default) solid var(--sn-surface-state-error-3);
+}
+
+.sn-btn-secondary-destructive:hover {
+  background-color: var(--sn-surface-state-error-2);
+  color: var(--sn-components-text-state-error);
+}
+
+.sn-btn-secondary-destructive:disabled,
+.sn-btn-secondary-destructive[aria-disabled="true"] {
+  background-color: var(--sn-surface-disabled);
+  color: var(--sn-text-disabled-invert);
+  border-color: transparent;
+}
+
+/* ── Text: Destructive ──────────────────────────────────────── */
+
+.sn-btn-text-destructive {
+  background-color: transparent;
+  color: var(--sn-text-state-error-action);
+  font-weight: 600;
+}
+
+.sn-btn-text-destructive:hover {
+  background-color: var(--sn-surface-state-error-2);
+  color: var(--sn-components-text-state-error);
+}
+
+.sn-btn-text-destructive:disabled,
+.sn-btn-text-destructive[aria-disabled="true"] {
+  color: var(--sn-text-disabled-main);
+}
+
+/* ── Icon: Destructive ──────────────────────────────────────── */
+
+.sn-btn-icon-destructive {
+  color: var(--sn-text-state-error-action);
+}
+
+.sn-btn-icon-destructive:hover {
+  background-color: var(--sn-surface-state-error-2);
+  color: var(--sn-components-text-state-error);
+}
+
+.sn-btn-icon-destructive:disabled,
+.sn-btn-icon-destructive[aria-disabled="true"] {
   color: var(--sn-text-disabled-main);
 }

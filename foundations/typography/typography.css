@@ -1,84 +1,127 @@
 /* =============================================================
    Supernova Typography
    Source: Figma text styles (supernova-design-system)
-   Font: Public Sans — load before using these classes:
-     https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&display=swap
+
+   Fonts required — load before these classes:
+     https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&family=Inter:wght@400;600&display=swap
+
+   Composite tokens (--sn-type-*) are CSS font shorthand values:
+     font-weight size/line-height family
+   Use them directly: font: var(--sn-type-header-xl-semibold);
    ============================================================= */
 
+/* ── Composite type tokens ─────────────────────────────────── */
+
+:root {
+  /* Header — Karla, 1.6 relative line-height */
+  --sn-type-header-xl-regular:  400 32px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-xl-semibold: 600 32px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-xl-black:    800 32px / 1.6 var(--sn-font-family-header);
+
+  --sn-type-header-lg-regular:  400 24px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-lg-semibold: 600 24px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-lg-black:    800 24px / 1.6 var(--sn-font-family-header);
+
+  --sn-type-header-md-regular:  400 20px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-md-semibold: 600 20px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-md-black:    800 20px / 1.6 var(--sn-font-family-header);
+
+  --sn-type-header-sm-regular:  400 18px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-sm-semibold: 600 18px / 1.6 var(--sn-font-family-header);
+  --sn-type-header-sm-black:    800 18px / 1.6 var(--sn-font-family-header);
+
+  /* Text — Inter, absolute line-heights */
+  --sn-type-text-lg-regular:  400 16px / 24px var(--sn-font-family-body);
+  --sn-type-text-lg-semibold: 600 16px / 24px var(--sn-font-family-body);
+
+  --sn-type-text-md-regular:  400 14px / 20px var(--sn-font-family-body);
+  --sn-type-text-md-semibold: 600 14px / 20px var(--sn-font-family-body);
+
+  --sn-type-text-sm-regular:  400 12px / 18px var(--sn-font-family-body);
+  --sn-type-text-sm-semibold: 600 12px / 18px var(--sn-font-family-body);
+
+  /* Label — Inter, tight line-height (= font size) */
+  --sn-type-label-lg-regular:  400 16px / 16px var(--sn-font-family-body);
+  --sn-type-label-lg-semibold: 600 16px / 16px var(--sn-font-family-body);
+
+  --sn-type-label-md-regular:  400 14px / 14px var(--sn-font-family-body);
+  --sn-type-label-md-semibold: 600 14px / 14px var(--sn-font-family-body);
+
+  --sn-type-label-sm-regular:  400 12px / 12px var(--sn-font-family-body);
+  --sn-type-label-sm-semibold: 600 12px / 12px var(--sn-font-family-body);
+
+  /* label-xs has no line-height variant — semibold only */
+  --sn-type-label-xs-semibold: 600 10px / 10px var(--sn-font-family-body);
+}
+
+
 /* ── Headers ──────────────────────────────────────────────────
-   Family: --sn-font-family-header (Public Sans)
-   Line-height: 1.6 (relative, scales with size)
-   Sizes: XL (32px), L (24px), M (20px), S (18px)
-   Weights: regular (400), semibold (600), black (800)
+   Karla — display headings, section titles
    ──────────────────────────────────────────────────────────── */
 
-.sn-header-xl-regular  { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 32px; font-weight: 400; line-height: 1.6; letter-spacing: 0; font-style: normal; }
-.sn-header-xl-semibold { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 32px; font-weight: 600; line-height: 1.6; letter-spacing: 0; font-style: normal; }
-.sn-header-xl-black    { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 32px; font-weight: 800; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-xl-regular  { font: var(--sn-type-header-xl-regular); }
+.sn-header-xl-semibold { font: var(--sn-type-header-xl-semibold); }
+.sn-header-xl-black    { font: var(--sn-type-header-xl-black); }
 
-.sn-header-lg-regular  { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 24px; font-weight: 400; line-height: 1.6; letter-spacing: 0; font-style: normal; }
-.sn-header-lg-semibold { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 24px; font-weight: 600; line-height: 1.6; letter-spacing: 0; font-style: normal; }
-.sn-header-lg-black    { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 24px; font-weight: 800; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-lg-regular  { font: var(--sn-type-header-lg-regular); }
+.sn-header-lg-semibold { font: var(--sn-type-header-lg-semibold); }
+.sn-header-lg-black    { font: var(--sn-type-header-lg-black); }
 
-.sn-header-md-regular  { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 20px; font-weight: 400; line-height: 1.6; letter-spacing: 0; font-style: normal; }
-.sn-header-md-semibold { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 20px; font-weight: 600; line-height: 1.6; letter-spacing: 0; font-style: normal; }
-.sn-header-md-black    { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 20px; font-weight: 800; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-md-regular  { font: var(--sn-type-header-md-regular); }
+.sn-header-md-semibold { font: var(--sn-type-header-md-semibold); }
+.sn-header-md-black    { font: var(--sn-type-header-md-black); }
 
-.sn-header-sm-regular  { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 18px; font-weight: 400; line-height: 1.6; letter-spacing: 0; font-style: normal; }
-.sn-header-sm-semibold { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 18px; font-weight: 600; line-height: 1.6; letter-spacing: 0; font-style: normal; }
-.sn-header-sm-black    { font-family: var(--sn-font-family-header, 'Karla', sans-serif); font-size: 18px; font-weight: 800; line-height: 1.6; letter-spacing: 0; font-style: normal; }
+.sn-header-sm-regular  { font: var(--sn-type-header-sm-regular); }
+.sn-header-sm-semibold { font: var(--sn-type-header-sm-semibold); }
+.sn-header-sm-black    { font: var(--sn-type-header-sm-black); }
 
 
 /* ── Text ─────────────────────────────────────────────────────
-   Family: --sn-font-family-body (Public Sans)
-   Use for: UI text, interactive elements, short strings
-   Sizes: L (16/24), M (14/20), S (12/18)
-   Weights: regular (400), semibold (600)
+   Inter — UI text, interactive elements, short strings
    ──────────────────────────────────────────────────────────── */
 
-.sn-text-lg-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: 0; font-style: normal; }
-.sn-text-lg-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 16px; font-weight: 600; line-height: 24px; letter-spacing: 0; font-style: normal; }
+.sn-text-lg-regular  { font: var(--sn-type-text-lg-regular); }
+.sn-text-lg-semibold { font: var(--sn-type-text-lg-semibold); }
 
-.sn-text-md-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: 0; font-style: normal; }
-.sn-text-md-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: 0; font-style: normal; }
+.sn-text-md-regular  { font: var(--sn-type-text-md-regular); }
+.sn-text-md-semibold { font: var(--sn-type-text-md-semibold); }
 
-.sn-text-sm-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 12px; font-weight: 400; line-height: 18px; letter-spacing: 0; font-style: normal; }
-.sn-text-sm-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 12px; font-weight: 600; line-height: 18px; letter-spacing: 0; font-style: normal; }
+.sn-text-sm-regular  { font: var(--sn-type-text-sm-regular); }
+.sn-text-sm-semibold { font: var(--sn-type-text-sm-semibold); }
 
 
 /* ── Paragraph ────────────────────────────────────────────────
-   Family: --sn-font-family-body (Public Sans)
-   Use for: body copy, long-form reading content
-   Same size + line-height as Text — distinction is semantic.
-   Weights: regular (400), semibold (600)
+   Inter — body copy, long-form reading content
+   Same values as Text; distinction is semantic.
    ──────────────────────────────────────────────────────────── */
 
-.sn-paragraph-lg-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: 0; font-style: normal; }
-.sn-paragraph-lg-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 16px; font-weight: 600; line-height: 24px; letter-spacing: 0; font-style: normal; }
+.sn-paragraph-lg-regular  { font: var(--sn-type-text-lg-regular); }
+.sn-paragraph-lg-semibold { font: var(--sn-type-text-lg-semibold); }
 
-.sn-paragraph-md-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: 0; font-style: normal; }
-.sn-paragraph-md-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: 0; font-style: normal; }
+.sn-paragraph-md-regular  { font: var(--sn-type-text-md-regular); }
+.sn-paragraph-md-semibold { font: var(--sn-type-text-md-semibold); }
 
-.sn-paragraph-sm-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 12px; font-weight: 400; line-height: 18px; letter-spacing: 0; font-style: normal; }
-.sn-paragraph-sm-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 12px; font-weight: 600; line-height: 18px; letter-spacing: 0; font-style: normal; }
+.sn-paragraph-sm-regular  { font: var(--sn-type-text-sm-regular); }
+.sn-paragraph-sm-semibold { font: var(--sn-type-text-sm-semibold); }
 
 
 /* ── Labels ───────────────────────────────────────────────────
-   Family: --sn-font-family-body (Public Sans)
-   Use for: button text, form labels, UI chrome, metadata
-   Line-height equals font-size (tight, single-line)
-   Sizes: L (16), M (14), S (12), XS (10 — semibold only)
-   Weights: regular (400), semibold (600)
+   Inter — button text, form labels, UI chrome, metadata
+   Tight line-height (= font size); single-line by design.
    ──────────────────────────────────────────────────────────── */
 
-.sn-label-lg-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 16px; font-weight: 400; line-height: 16px; letter-spacing: 0; font-style: normal; }
-.sn-label-lg-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 16px; font-weight: 600; line-height: 16px; letter-spacing: 0; font-style: normal; }
+.sn-label-lg-regular  { font: var(--sn-type-label-lg-regular); }
+.sn-label-lg-semibold { font: var(--sn-type-label-lg-semibold); }
 
-.sn-label-md-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 14px; font-weight: 400; line-height: 14px; letter-spacing: 0; font-style: normal; }
-.sn-label-md-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 14px; font-weight: 600; line-height: 14px; letter-spacing: 0; font-style: normal; }
+.sn-label-md-regular  { font: var(--sn-type-label-md-regular); }
+.sn-label-md-semibold { font: var(--sn-type-label-md-semibold); }
 
-.sn-label-sm-regular  { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 12px; font-weight: 400; line-height: 12px; letter-spacing: 0; font-style: normal; }
-.sn-label-sm-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 12px; font-weight: 600; line-height: 12px; letter-spacing: 0; font-style: normal; }
+.sn-label-sm-regular  { font: var(--sn-type-label-sm-regular); }
+.sn-label-sm-semibold { font: var(--sn-type-label-sm-semibold); }
 
-/* XS label: semibold only, all-caps, subtle letter-spacing */
-.sn-label-xs-semibold { font-family: var(--sn-font-family-body, 'Inter', sans-serif); font-size: 10px; font-weight: 600; line-height: 10px; letter-spacing: 0.2px; text-transform: uppercase; font-style: normal; }
+/* XS: semibold only — all-caps with letter-spacing */
+.sn-label-xs-semibold {
+  font: var(--sn-type-label-xs-semibold);
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}

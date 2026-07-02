@@ -1,0 +1,325 @@
+/* =============================================================
+   Supernova — Dropdown Button + Menu
+   Source: Figma (supernova-design-system, node 2518:217540, 2532:225533)
+
+   Dropdown button (trigger):
+     <div class="sn-field">
+       <label class="sn-field-label">Label</label>
+       <button class="sn-select" type="button" aria-haspopup="listbox">
+         <span class="sn-select-value">Selected option</span>
+         <svg class="sn-select-chevron" ...><!-- down chevron --></svg>
+       </button>
+       <span class="sn-field-helper">Helper text</span>
+     </div>
+
+   States on .sn-select: aria-expanded="true" (open), disabled attr
+   Validation state modifiers on .sn-field: sn-field--error | sn-field--warning
+
+   Size modifier on .sn-select: sn-select--md (40px, default is 32px)
+
+   Empty/placeholder state:
+     <button class="sn-select sn-select--empty" ...>
+       <span class="sn-select-value">Select...</span>
+       ...
+     </button>
+
+   Dropdown menu:
+     <ul class="sn-dropdown-menu" role="listbox">
+       <li class="sn-dropdown-section-header">Section heading</li>
+       <li class="sn-dropdown-item" role="option" tabindex="0">Item label</li>
+       <li class="sn-dropdown-item sn-dropdown-item--selected" role="option" aria-selected="true" tabindex="0">Selected item</li>
+       <li class="sn-dropdown-item" role="option" aria-disabled="true" tabindex="-1">Disabled item</li>
+       <li class="sn-dropdown-divider" role="separator"></li>
+     </ul>
+
+   With icon:
+     <li class="sn-dropdown-item" role="option">
+       <svg class="sn-dropdown-item-icon">...</svg>
+       <span class="sn-dropdown-item-label">Item</span>
+       <span class="sn-dropdown-item-desc">Details</span>
+     </li>
+
+   With search header:
+     <div class="sn-dropdown-search">
+       <svg ...><!-- search icon --></svg>
+       <input type="search" placeholder="Search...">
+     </div>
+
+   Positioning: use position:relative on the trigger parent,
+   position:absolute on .sn-dropdown-menu (top: calc(100% + 4px)).
+   ============================================================= */
+
+/* ── Dropdown button (trigger) ────────────────────────────── */
+
+.sn-select {
+  display: flex;
+  align-items: center;
+  gap: var(--sn-spacing-xs);
+  width: 100%;
+  height: 32px;
+  padding: var(--sn-spacing-2xs) var(--sn-spacing-xs);
+  box-sizing: border-box;
+  background: var(--sn-components-surface-1);
+  border: var(--sn-border-width-default) solid var(--sn-border-color-3);
+  border-radius: var(--sn-radius-less-rounded);
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+  text-align: left;
+}
+
+.sn-select--md {
+  height: 40px;
+}
+
+.sn-select-value {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--sn-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sn-select--empty .sn-select-value {
+  color: var(--sn-text-empty);
+}
+
+.sn-select-chevron {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--sn-text-1);
+}
+
+/* Hover */
+.sn-select:hover:not(:focus):not(:disabled):not([aria-expanded="true"]) {
+  background: var(--sn-surface-brand-pink-1);
+  border-color: var(--sn-border-color-invert);
+}
+
+/* Focus / open */
+.sn-select:focus,
+.sn-select[aria-expanded="true"] {
+  outline: none;
+  background: var(--sn-components-surface-1);
+  border-width: var(--sn-border-width-focus);
+  border-color: var(--sn-border-color-brand-action);
+}
+
+/* Disabled */
+.sn-select:disabled {
+  background: var(--sn-surface-disabled);
+  border-color: var(--sn-border-color-2);
+  cursor: not-allowed;
+}
+
+.sn-select:disabled .sn-select-value,
+.sn-select:disabled .sn-select-chevron {
+  color: var(--sn-text-disabled-invert);
+}
+
+/* Validation states */
+.sn-field--error .sn-select {
+  border-color: var(--sn-border-color-state-error-action);
+}
+
+.sn-field--error .sn-select:hover:not(:focus):not([aria-expanded="true"]):not(:disabled) {
+  background: var(--sn-components-surface-1);
+  border-color: var(--sn-border-color-state-error-action);
+}
+
+.sn-field--error .sn-select:focus,
+.sn-field--error .sn-select[aria-expanded="true"] {
+  border-width: var(--sn-border-width-focus);
+  border-color: var(--sn-border-color-state-error-action);
+}
+
+.sn-field--warning .sn-select {
+  border-color: var(--sn-border-color-state-warning-action);
+}
+
+.sn-field--warning .sn-select:hover:not(:focus):not([aria-expanded="true"]):not(:disabled) {
+  background: var(--sn-components-surface-1);
+  border-color: var(--sn-border-color-state-warning-action);
+}
+
+.sn-field--warning .sn-select:focus,
+.sn-field--warning .sn-select[aria-expanded="true"] {
+  border-width: var(--sn-border-width-focus);
+  border-color: var(--sn-border-color-state-warning-action);
+}
+
+/* ── Dropdown menu panel ──────────────────────────────────── */
+
+.sn-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  max-width: 280px;
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--sn-components-dropdown-surface-menu);
+  border: var(--sn-border-width-default) solid var(--sn-border-color-2);
+  border-radius: var(--sn-radius-rounded);
+  box-shadow: 0 4px 8px 0 rgba(34, 35, 40, 0.24);
+  overflow-x: hidden;
+}
+
+/* ── Search header ────────────────────────────────────────── */
+
+.sn-dropdown-search {
+  display: flex;
+  align-items: center;
+  gap: var(--sn-spacing-xs);
+  padding: var(--sn-spacing-sm) var(--sn-spacing-md);
+  border-bottom: var(--sn-border-width-default) solid var(--sn-border-color-2);
+  background: var(--sn-components-dropdown-surface-menu);
+  flex-shrink: 0;
+}
+
+.sn-dropdown-search svg,
+.sn-dropdown-search .sn-dropdown-search-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--sn-text-1);
+}
+
+.sn-dropdown-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  color: var(--sn-text-1);
+}
+
+.sn-dropdown-search input::placeholder {
+  color: var(--sn-text-empty);
+}
+
+/* ── Section ──────────────────────────────────────────────── */
+
+.sn-dropdown-section {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sn-spacing-xs) 0;
+}
+
+.sn-dropdown-section + .sn-dropdown-section {
+  border-top: var(--sn-border-width-default) solid var(--sn-border-color-2);
+}
+
+/* ── Section header ───────────────────────────────────────── */
+
+.sn-dropdown-section-header {
+  padding: var(--sn-spacing-xs) var(--sn-spacing-md);
+  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  color: var(--sn-text-2);
+  pointer-events: none;
+}
+
+/* ── Divider ──────────────────────────────────────────────── */
+
+.sn-dropdown-divider {
+  height: var(--sn-border-width-default);
+  background: var(--sn-border-color-2);
+  margin: var(--sn-spacing-xs) 0;
+}
+
+/* ── Menu item ────────────────────────────────────────────── */
+
+.sn-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sn-spacing-xs);
+  padding: var(--sn-spacing-xs) var(--sn-spacing-md);
+  background: var(--sn-components-dropdown-surface-menu);
+  cursor: pointer;
+  transition: background 100ms ease;
+  list-style: none;
+}
+
+.sn-dropdown-item-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: var(--sn-text-1);
+}
+
+.sn-dropdown-item-label {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--sn-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sn-dropdown-item-desc {
+  display: block;
+  font-family: var(--sn-font-family-body, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--sn-text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Item hover */
+.sn-dropdown-item:hover:not([aria-disabled="true"]) {
+  background: var(--sn-surface-2);
+}
+
+/* Item selected */
+.sn-dropdown-item--selected,
+.sn-dropdown-item[aria-selected="true"] {
+  background: var(--sn-surface-brand-pink-1);
+}
+
+.sn-dropdown-item--selected .sn-dropdown-item-label,
+.sn-dropdown-item[aria-selected="true"] .sn-dropdown-item-label {
+  color: var(--sn-text-1);
+  font-weight: 600;
+}
+
+.sn-dropdown-item--selected:hover,
+.sn-dropdown-item[aria-selected="true"]:hover {
+  background: var(--sn-surface-brand-pink-1);
+}
+
+/* Item disabled */
+.sn-dropdown-item[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.sn-dropdown-item[aria-disabled="true"] .sn-dropdown-item-label,
+.sn-dropdown-item[aria-disabled="true"] .sn-dropdown-item-icon {
+  color: var(--sn-text-disabled-main);
+}
+
+/* Item focus */
+.sn-dropdown-item:focus-visible {
+  outline: none;
+  background: var(--sn-surface-2);
+}

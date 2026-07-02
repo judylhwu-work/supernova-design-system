@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supernova Design System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link id="tokens-light" rel="stylesheet" href="dist/tokens.light.css">
+  <link id="tokens-dark"  rel="stylesheet" href="dist/tokens.dark.css" disabled>
+  <link rel="stylesheet" href="dist/tokens.primitives.css">
+  <link rel="stylesheet" href="foundations/typography/typography.css">
+  <link rel="stylesheet" href="components/button/button.css">
+  <link rel="stylesheet" href="components/chip/chip.css">
+  <link rel="stylesheet" href="components/badge/badge.css">
+  <link rel="stylesheet" href="components/input/input.css">
+  <link rel="stylesheet" href="components/selection-controls/selection-controls.css">
+  <link rel="stylesheet" href="components/dropdown/dropdown.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      overflow-y: scroll; /* always reserve scrollbar space — prevents layout shift on theme toggle */
+    }
+
+    body {
+      background-color: var(--sn-surface-1);
+      color: var(--sn-text-1);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      min-height: 100vh;
+    }
+
+    /* ── Page layout ─────────────────────────────────────────── */
+
+    .ds-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background-color: var(--sn-surface-1);
+      border-bottom: 1px solid var(--sn-border-color-1);
+    }
+
+    .ds-header-title {
+      font-family: 'Karla', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--sn-text-1);
+    }
+
+    .ds-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    /* ── Sections ────────────────────────────────────────────── */
+
+    .ds-section-title {
+      font-family: 'Karla', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--sn-text-1);
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--sn-border-color-1);
+    }
+
+    .ds-subsection {
+      margin-bottom: 40px;
+    }
+
+    .ds-subsection-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--sn-text-3);
+      margin-bottom: 16px;
+    }
+
+    /* ── State grid ──────────────────────────────────────────── */
+
+    .ds-states {
+      display: flex;
+      align-items: flex-end;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .ds-state {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .ds-state-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      color: var(--sn-text-3);
+    }
+
+    .ds-size-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    /* ── Divider ─────────────────────────────────────────────── */
+
+    .ds-divider {
+      width: 1px;
+      height: 48px;
+      background-color: var(--sn-border-color-1);
+      align-self: flex-end;
+    }
+
+    /* ── Button section: size toggle ────────────────────────── */
+
+    .ds-section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--sn-border-color-1);
+    }
+
+    .ds-section-header .ds-section-title {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+      flex: 1;
+    }
+
+    .ds-size-row > *:nth-child(n+2) { display: none; }
+    .ds-sizes-visible .ds-size-row > *:nth-child(n+2) { display: inline-flex; }
+
+    /* ── Button type-group layout ────────────────────────────── */
+
+    .ds-type-row {
+      display: flex;
+      gap: 28px;
+      align-items: flex-end;
+    }
+
+    .ds-type-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .ds-type-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      color: var(--sn-text-3);
+      white-space: nowrap;
+    }
+
+    .ds-divider-tall {
+      align-self: stretch;
+      height: auto;
+    }
+
+    /* ── Static hover preview ────────────────────────────────── */
+
+    .preview-hover.sn-btn-primary         { background-color: var(--sn-surface-brand-green-action-hover); }
+    .preview-hover.sn-btn-secondary       { background-color: var(--sn-surface-brand-pink-2); border-color: var(--sn-border-color-brand-1); color: var(--sn-components-text-brand-pink-dark); }
+    .preview-hover.sn-btn-text            { background-color: var(--sn-surface-brand-pink-2); color: var(--sn-components-text-brand-pink-dark); }
+    .preview-hover.sn-btn-text-secondary  { background-color: var(--sn-surface-brand-green-2); color: var(--sn-components-text-brand-green-dark); }
+    .preview-hover.sn-btn-icon-primary              { background-color: var(--sn-surface-brand-pink-1); color: var(--sn-components-text-brand-pink-dark); }
+    .preview-hover.sn-btn-icon-secondary            { background-color: var(--sn-surface-brand-green-2); color: var(--sn-components-text-brand-green-dark); }
+    .preview-hover.sn-btn-destructive               { background-color: var(--sn-surface-state-error-action-hover); }
+    .preview-hover.sn-btn-secondary-destructive     { background-color: var(--sn-surface-state-error-2); color: var(--sn-components-text-state-error); }
+    .preview-hover.sn-btn-text-destructive          { background-color: var(--sn-surface-state-error-2); color: var(--sn-components-text-state-error); }
+    .preview-hover.sn-btn-icon-destructive          { background-color: var(--sn-surface-state-error-2); color: var(--sn-components-text-state-error); }
+
+    .preview-active.sn-chip-gray, .preview-active.sn-chip-white {
+      background-color: var(--sn-components-chip-surface-active-default);
+      color: var(--sn-text-black);
+      font-weight: 600;
+    }
+    .preview-hover.sn-chip-gray        { background-color: var(--sn-surface-3); }
+    .preview-hover.sn-chip-white       { background-color: var(--sn-surface-2); }
+    .preview-active-hover.sn-chip-gray,
+    .preview-active-hover.sn-chip-white { background-color: var(--sn-components-chip-surface-active-hover); }
+
+    /* ── Chip white backdrop ─────────────────────────────────── */
+
+    .chip-white-bg {
+      background-color: var(--sn-surface-3);
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* ── Color on dark bg ────────────────────────────────────── */
+    .swatch-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .swatch {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      border: 1px solid var(--sn-border-color-1);
+    }
+
+    /* ── Input / Select preview states ──────────────────────── */
+    .preview-hover-input,
+    .preview-hover-select {
+      background: var(--sn-surface-brand-pink-1) !important;
+      border-color: var(--sn-border-color-invert) !important;
+    }
+    .preview-focus-input,
+    .preview-focus-select {
+      border-width: var(--sn-border-width-focus) !important;
+      border-color: var(--sn-border-color-brand-action) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="ds-header">
+    <span class="ds-header-title">Supernova design system</span>
+    <button class="sn-btn-icon sn-btn-icon-primary sn-btn-icon-md" id="toggle-theme" onclick="toggleTheme()" aria-label="Switch to dark mode">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="ds-main">
+
+    <!-- ══ BUTTONS ══════════════════════════════════════════════ -->
+    <section class="ds-btn-section">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Button</h2>
+        <button class="sn-btn sn-btn-text-secondary sn-btn-sm" id="toggle-sizes" onclick="toggleSizes()">+ Show all sizes</button>
+      </div>
+
+      <!-- ── CONTAINED ── -->
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Contained</p>
+        <div class="ds-states">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-primary">Button</button>
+                  <button class="sn-btn sn-btn-primary sn-btn-md">Button</button>
+                  <button class="sn-btn sn-btn-primary sn-btn-sm">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-secondary">Button</button>
+                  <button class="sn-btn sn-btn-secondary sn-btn-md">Button</button>
+                  <button class="sn-btn sn-btn-secondary sn-btn-sm">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-destructive">Button</button>
+                  <button class="sn-btn sn-btn-destructive sn-btn-md">Button</button>
+                  <button class="sn-btn sn-btn-destructive sn-btn-sm">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Sec. destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-secondary-destructive">Button</button>
+                  <button class="sn-btn sn-btn-secondary-destructive sn-btn-md">Button</button>
+                  <button class="sn-btn sn-btn-secondary-destructive sn-btn-sm">Button</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Hover</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-primary preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-primary sn-btn-md preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-primary sn-btn-sm preview-hover">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-secondary preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-secondary sn-btn-md preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-secondary sn-btn-sm preview-hover">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-destructive preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-destructive sn-btn-md preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-destructive sn-btn-sm preview-hover">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Sec. destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-secondary-destructive preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-secondary-destructive sn-btn-md preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-secondary-destructive sn-btn-sm preview-hover">Button</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-primary" disabled>Button</button>
+                  <button class="sn-btn sn-btn-primary sn-btn-md" disabled>Button</button>
+                  <button class="sn-btn sn-btn-primary sn-btn-sm" disabled>Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-secondary" disabled>Button</button>
+                  <button class="sn-btn sn-btn-secondary sn-btn-md" disabled>Button</button>
+                  <button class="sn-btn sn-btn-secondary sn-btn-sm" disabled>Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-destructive" disabled>Button</button>
+                  <button class="sn-btn sn-btn-destructive sn-btn-md" disabled>Button</button>
+                  <button class="sn-btn sn-btn-destructive sn-btn-sm" disabled>Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Sec. destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-secondary-destructive" disabled>Button</button>
+                  <button class="sn-btn sn-btn-secondary-destructive sn-btn-md" disabled>Button</button>
+                  <button class="sn-btn sn-btn-secondary-destructive sn-btn-sm" disabled>Button</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── TEXT ── -->
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Text</p>
+        <div class="ds-states">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text">Button</button>
+                  <button class="sn-btn sn-btn-text sn-btn-md">Button</button>
+                  <button class="sn-btn sn-btn-text sn-btn-sm">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text-secondary">Button</button>
+                  <button class="sn-btn sn-btn-text-secondary sn-btn-md">Button</button>
+                  <button class="sn-btn sn-btn-text-secondary sn-btn-sm">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text-destructive">Button</button>
+                  <button class="sn-btn sn-btn-text-destructive sn-btn-md">Button</button>
+                  <button class="sn-btn sn-btn-text-destructive sn-btn-sm">Button</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Hover</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-text sn-btn-md preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-text sn-btn-sm preview-hover">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text-secondary preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-text-secondary sn-btn-md preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-text-secondary sn-btn-sm preview-hover">Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text-destructive preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-text-destructive sn-btn-md preview-hover">Button</button>
+                  <button class="sn-btn sn-btn-text-destructive sn-btn-sm preview-hover">Button</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text" disabled>Button</button>
+                  <button class="sn-btn sn-btn-text sn-btn-md" disabled>Button</button>
+                  <button class="sn-btn sn-btn-text sn-btn-sm" disabled>Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text-secondary" disabled>Button</button>
+                  <button class="sn-btn sn-btn-text-secondary sn-btn-md" disabled>Button</button>
+                  <button class="sn-btn sn-btn-text-secondary sn-btn-sm" disabled>Button</button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn sn-btn-text-destructive" disabled>Button</button>
+                  <button class="sn-btn sn-btn-text-destructive sn-btn-md" disabled>Button</button>
+                  <button class="sn-btn sn-btn-text-destructive sn-btn-sm" disabled>Button</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── ICON ── -->
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Icon</p>
+        <div class="ds-states">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-primary" aria-label="Add"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-primary sn-btn-icon-md" aria-label="Add"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-primary sn-btn-icon-sm" aria-label="Add"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-secondary" aria-label="Add"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-secondary sn-btn-icon-md" aria-label="Add"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-secondary sn-btn-icon-sm" aria-label="Add"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-destructive" aria-label="Delete"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-destructive sn-btn-icon-md" aria-label="Delete"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-destructive sn-btn-icon-sm" aria-label="Delete"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Hover</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-primary preview-hover" aria-label="Add"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-primary sn-btn-icon-md preview-hover" aria-label="Add"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-primary sn-btn-icon-sm preview-hover" aria-label="Add"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-secondary preview-hover" aria-label="Add"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-secondary sn-btn-icon-md preview-hover" aria-label="Add"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-secondary sn-btn-icon-sm preview-hover" aria-label="Add"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-destructive preview-hover" aria-label="Delete"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-destructive sn-btn-icon-md preview-hover" aria-label="Delete"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-destructive sn-btn-icon-sm preview-hover" aria-label="Delete"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled</span>
+            <div class="ds-type-row">
+              <div class="ds-type-col">
+                <span class="ds-type-label">Primary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-primary" aria-label="Add" disabled><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-primary sn-btn-icon-md" aria-label="Add" disabled><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-primary sn-btn-icon-sm" aria-label="Add" disabled><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Secondary</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-secondary" aria-label="Add" disabled><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-secondary sn-btn-icon-md" aria-label="Add" disabled><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-secondary sn-btn-icon-sm" aria-label="Add" disabled><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg></button>
+                </div>
+              </div>
+              <div class="ds-type-col">
+                <span class="ds-type-label">Destructive</span>
+                <div class="ds-size-row">
+                  <button class="sn-btn-icon sn-btn-icon-destructive" aria-label="Delete" disabled><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-destructive sn-btn-icon-md" aria-label="Delete" disabled><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                  <button class="sn-btn-icon sn-btn-icon-destructive sn-btn-icon-sm" aria-label="Delete" disabled><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-.653l-.844 8.02A2 2 0 0 1 10.01 14H5.99a2 2 0 0 1-1.993-1.98L3.153 4H2.5a.5.5 0 0 1-.5-.5z"/></svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CHIPS ═════════════════════════════════════════════════ -->
+    <section>
+      <h2 class="ds-section-title">Chip</h2>
+
+      <!-- Gray chip -->
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Gray — use on white / light backgrounds</p>
+        <div class="ds-states">
+          <div class="ds-state">
+            <span class="ds-state-label">Default</span>
+            <button class="sn-chip sn-chip-gray">Label</button>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Hover</span>
+            <button class="sn-chip sn-chip-gray preview-hover">Label</button>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Active</span>
+            <button class="sn-chip sn-chip-gray" aria-selected="true">Label</button>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Active hover</span>
+            <button class="sn-chip sn-chip-gray preview-active-hover" aria-selected="true">Label</button>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled</span>
+            <button class="sn-chip sn-chip-gray" aria-disabled="true" disabled>Label</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- White chip -->
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">White — use on gray / colored backgrounds</p>
+        <div class="chip-white-bg">
+          <div class="ds-states">
+            <div class="ds-state">
+              <span class="ds-state-label">Default</span>
+              <button class="sn-chip sn-chip-white">Label</button>
+            </div>
+            <div class="ds-state">
+              <span class="ds-state-label">Hover</span>
+              <button class="sn-chip sn-chip-white preview-hover">Label</button>
+            </div>
+            <div class="ds-state">
+              <span class="ds-state-label">Active</span>
+              <button class="sn-chip sn-chip-white" aria-selected="true">Label</button>
+            </div>
+            <div class="ds-state">
+              <span class="ds-state-label">Active hover</span>
+              <button class="sn-chip sn-chip-white preview-active-hover" aria-selected="true">Label</button>
+            </div>
+            <div class="ds-state">
+              <span class="ds-state-label">Disabled</span>
+              <button class="sn-chip sn-chip-white" aria-disabled="true" disabled>Label</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chip group -->
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Group — gray (on white / light backgrounds)</p>
+        <div class="ds-states" style="flex-direction: column; align-items: flex-start;">
+          <div class="ds-state">
+            <span class="ds-state-label">Default</span>
+            <div class="sn-chip-group" role="group" aria-label="Filter">
+              <button class="sn-chip sn-chip-gray sn-chip--active" aria-selected="true">All</button>
+              <button class="sn-chip sn-chip-gray">Recent</button>
+              <button class="sn-chip sn-chip-gray">Saved</button>
+              <div class="sn-chip-group-divider" role="separator"></div>
+              <button class="sn-chip sn-chip-gray">Design</button>
+              <button class="sn-chip sn-chip-gray">Engineering</button>
+            </div>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled</span>
+            <div class="sn-chip-group sn-chip-group--disabled" role="group" aria-label="Filter" aria-disabled="true">
+              <button class="sn-chip sn-chip-gray" aria-disabled="true" disabled>All</button>
+              <button class="sn-chip sn-chip-gray" aria-disabled="true" disabled>Recent</button>
+              <button class="sn-chip sn-chip-gray" aria-disabled="true" disabled>Saved</button>
+              <div class="sn-chip-group-divider" role="separator"></div>
+              <button class="sn-chip sn-chip-gray" aria-disabled="true" disabled>Design</button>
+              <button class="sn-chip sn-chip-gray" aria-disabled="true" disabled>Engineering</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Group — white (on gray / colored backgrounds)</p>
+        <div class="chip-white-bg">
+          <div class="ds-states" style="flex-direction: column; align-items: flex-start;">
+            <div class="ds-state">
+              <span class="ds-state-label">Default</span>
+              <div class="sn-chip-group sn-chip-group-white" role="group" aria-label="Filter">
+                <button class="sn-chip sn-chip-white sn-chip--active" aria-selected="true">All</button>
+                <button class="sn-chip sn-chip-white">Recent</button>
+                <button class="sn-chip sn-chip-white">Saved</button>
+                <div class="sn-chip-group-divider" role="separator"></div>
+                <button class="sn-chip sn-chip-white">Design</button>
+                <button class="sn-chip sn-chip-white">Engineering</button>
+              </div>
+            </div>
+            <div class="ds-state">
+              <span class="ds-state-label">Disabled</span>
+              <div class="sn-chip-group sn-chip-group-white" role="group" aria-label="Filter" aria-disabled="true">
+                <button class="sn-chip sn-chip-white" aria-disabled="true" disabled>All</button>
+                <button class="sn-chip sn-chip-white" aria-disabled="true" disabled>Recent</button>
+                <button class="sn-chip sn-chip-white" aria-disabled="true" disabled>Saved</button>
+                <div class="sn-chip-group-divider" role="separator"></div>
+                <button class="sn-chip sn-chip-white" aria-disabled="true" disabled>Design</button>
+                <button class="sn-chip sn-chip-white" aria-disabled="true" disabled>Engineering</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BADGES ════════════════════════════════════════════════ -->
+    <section>
+      <h2 class="ds-section-title">Badge</h2>
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">All variants</p>
+        <div class="ds-states" style="align-items: center;">
+          <div class="ds-state">
+            <span class="ds-state-label">Brand (pink)</span>
+            <span class="sn-badge sn-badge-brand">Brand</span>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Brand (green)</span>
+            <span class="sn-badge sn-badge-brand-green">Brand</span>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Success</span>
+            <span class="sn-badge sn-badge-success">Shipped</span>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Warning</span>
+            <span class="sn-badge sn-badge-warning">In review</span>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Error</span>
+            <span class="sn-badge sn-badge-error">Blocked</span>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Neutral</span>
+            <span class="sn-badge sn-badge-neutral">Draft</span>
+          </div>
+          <div class="ds-state">
+            <span class="ds-state-label">Dark</span>
+            <span class="sn-badge sn-badge-dark">Beta</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ INPUT / FIELD ════════════════════════════════════════ -->
+    <section>
+      <h2 class="ds-section-title">Input / Field</h2>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">States</p>
+        <div class="ds-states" style="align-items: flex-start;">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default (filled)</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <input class="sn-input" type="text" value="Filled value">
+              <span class="sn-field-helper">Helper text</span>
+            </div>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Empty</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <input class="sn-input" type="text" placeholder="Placeholder text">
+            </div>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Hover</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <input class="sn-input preview-hover-input" type="text" value="Filled value">
+            </div>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Focus</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <input class="sn-input preview-focus-input" type="text" value="Focused value">
+            </div>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Error</span>
+            <div class="sn-field sn-field--error" style="width: 192px;">
+              <label class="sn-field-label">Label <span class="sn-field-required">*</span></label>
+              <input class="sn-input" type="text" value="Invalid value">
+              <span class="sn-field-helper">This field has an error</span>
+            </div>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Warning</span>
+            <div class="sn-field sn-field--warning" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <input class="sn-input" type="text" value="Questionable value">
+              <span class="sn-field-helper">This may need attention</span>
+            </div>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <input class="sn-input" type="text" value="Disabled value" disabled>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Textarea</p>
+        <div class="sn-field" style="max-width: 320px;">
+          <label class="sn-field-label">Label <span class="sn-field-required">*</span></label>
+          <textarea class="sn-input sn-input--textarea" placeholder="Write something here..."></textarea>
+          <span class="sn-field-helper">Optional helper text</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ SELECTION CONTROLS ════════════════════════════════════ -->
+    <section>
+      <h2 class="ds-section-title">Selection Controls</h2>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Checkbox</p>
+        <div class="ds-states" style="align-items: center;">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default off</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-checkbox">
+              <span class="sn-selection-label">Label</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default on</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-checkbox" checked>
+              <span class="sn-selection-label">Label</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Indeterminate</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-checkbox" id="demo-partial">
+              <span class="sn-selection-label">Label</span>
+            </label>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled off</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-checkbox" disabled>
+              <span class="sn-selection-label">Label</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled on</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-checkbox" checked disabled>
+              <span class="sn-selection-label">Label</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Radio</p>
+        <div class="ds-states" style="align-items: center;">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default off</span>
+            <label class="sn-selection-wrap">
+              <input type="radio" class="sn-radio" name="demo-radio">
+              <span class="sn-selection-label">Option A</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default on</span>
+            <label class="sn-selection-wrap">
+              <input type="radio" class="sn-radio" name="demo-radio" checked>
+              <span class="sn-selection-label">Option B</span>
+            </label>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled off</span>
+            <label class="sn-selection-wrap">
+              <input type="radio" class="sn-radio" name="demo-radio-dis" disabled>
+              <span class="sn-selection-label">Option C</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled on</span>
+            <label class="sn-selection-wrap">
+              <input type="radio" class="sn-radio" name="demo-radio-dis" checked disabled>
+              <span class="sn-selection-label">Option D</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Switch</p>
+        <div class="ds-states" style="align-items: center;">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Off</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-switch" role="switch">
+              <span class="sn-selection-label">Toggle</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">On</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-switch" role="switch" checked>
+              <span class="sn-selection-label">Toggle</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled off</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-switch" role="switch" disabled>
+              <span class="sn-selection-label">Toggle</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled on</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-switch" role="switch" checked disabled>
+              <span class="sn-selection-label">Toggle</span>
+            </label>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Small off</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-switch sn-switch--sm" role="switch">
+              <span class="sn-selection-label">Toggle</span>
+            </label>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Small on</span>
+            <label class="sn-selection-wrap">
+              <input type="checkbox" class="sn-switch sn-switch--sm" role="switch" checked>
+              <span class="sn-selection-label">Toggle</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ DROPDOWN ══════════════════════════════════════════════ -->
+    <section>
+      <h2 class="ds-section-title">Dropdown</h2>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Button — States</p>
+        <div class="ds-states" style="align-items: flex-start;">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Default</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <button class="sn-select" type="button" aria-haspopup="listbox">
+                <span class="sn-select-value">Selected option</span>
+                <svg class="sn-select-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Empty</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <button class="sn-select sn-select--empty" type="button" aria-haspopup="listbox">
+                <span class="sn-select-value">Select...</span>
+                <svg class="sn-select-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Focus / open</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <button class="sn-select" type="button" aria-expanded="true" aria-haspopup="listbox">
+                <span class="sn-select-value">Selected option</span>
+                <svg class="sn-select-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="ds-divider ds-divider-tall"></div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Error</span>
+            <div class="sn-field sn-field--error" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <button class="sn-select" type="button" aria-haspopup="listbox">
+                <span class="sn-select-value">Invalid value</span>
+                <svg class="sn-select-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="sn-field-helper">Select a valid option</span>
+            </div>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Disabled</span>
+            <div class="sn-field" style="width: 192px;">
+              <label class="sn-field-label">Label</label>
+              <button class="sn-select" type="button" disabled>
+                <span class="sn-select-value">Disabled</span>
+                <svg class="sn-select-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Menu</p>
+        <div class="ds-states" style="align-items: flex-start;">
+
+          <div class="ds-state">
+            <span class="ds-state-label">Basic list</span>
+            <ul class="sn-dropdown-menu" style="position: static;" role="listbox">
+              <div class="sn-dropdown-section">
+                <li class="sn-dropdown-item" role="option" tabindex="0"><span class="sn-dropdown-item-label">Item one</span></li>
+                <li class="sn-dropdown-item" role="option" tabindex="0">
+                  <span class="sn-dropdown-item-label">Item two</span>
+                  <span class="sn-dropdown-item-desc">With a description</span>
+                </li>
+                <li class="sn-dropdown-item sn-dropdown-item--selected" role="option" tabindex="0" aria-selected="true"><span class="sn-dropdown-item-label">Selected item</span></li>
+                <li class="sn-dropdown-item" role="option" tabindex="0"><span class="sn-dropdown-item-label">Item four</span></li>
+                <li class="sn-dropdown-item" role="option" tabindex="-1" aria-disabled="true"><span class="sn-dropdown-item-label">Disabled item</span></li>
+              </div>
+            </ul>
+          </div>
+
+          <div class="ds-state">
+            <span class="ds-state-label">Search + sections</span>
+            <ul class="sn-dropdown-menu" style="position: static;" role="listbox">
+              <div class="sn-dropdown-search">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10 10l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <input type="search" placeholder="Search...">
+              </div>
+              <div class="sn-dropdown-section">
+                <li class="sn-dropdown-section-header">Section A</li>
+                <li class="sn-dropdown-item" role="option" tabindex="0"><span class="sn-dropdown-item-label">Option one</span></li>
+                <li class="sn-dropdown-item" role="option" tabindex="0"><span class="sn-dropdown-item-label">Option two</span></li>
+              </div>
+              <div class="sn-dropdown-section">
+                <li class="sn-dropdown-section-header">Section B</li>
+                <li class="sn-dropdown-item sn-dropdown-item--selected" role="option" tabindex="0" aria-selected="true"><span class="sn-dropdown-item-label">Option three</span></li>
+                <li class="sn-dropdown-item" role="option" tabindex="0"><span class="sn-dropdown-item-label">Option four</span></li>
+              </div>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ TYPOGRAPHY ════════════════════════════════════════════ -->
+    <section>
+      <h2 class="ds-section-title">Typography</h2>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Headers — Karla</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <span class="sn-header-xl-black">Header XL Black</span>
+          <span class="sn-header-xl-semibold">Header XL Semibold</span>
+          <span class="sn-header-xl-regular">Header XL Regular</span>
+          <span class="sn-header-lg-black">Header LG Black</span>
+          <span class="sn-header-md-semibold">Header MD Semibold</span>
+          <span class="sn-header-sm-regular">Header SM Regular</span>
+        </div>
+      </div>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Text — Inter</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <span class="sn-text-lg-semibold">Text LG Semibold — UI text, interactive elements</span>
+          <span class="sn-text-lg-regular">Text LG Regular — UI text, interactive elements</span>
+          <span class="sn-text-md-semibold">Text MD Semibold — secondary UI text</span>
+          <span class="sn-text-md-regular">Text MD Regular — secondary UI text</span>
+          <span class="sn-text-sm-semibold">Text SM Semibold — small UI text</span>
+          <span class="sn-text-sm-regular">Text SM Regular — small UI text</span>
+        </div>
+      </div>
+
+      <div class="ds-subsection">
+        <p class="ds-subsection-title">Labels — Inter</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <span class="sn-label-lg-semibold">Label LG Semibold — button text, form labels</span>
+          <span class="sn-label-md-regular">Label MD Regular — metadata, UI chrome</span>
+          <span class="sn-label-sm-semibold">Label SM Semibold — small labels</span>
+          <span class="sn-label-xs-semibold">Label XS — badge text</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const moonSVG = `<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/></svg>`;
+    const sunSVG  = `<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707"/></svg>`;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const partial = document.getElementById('demo-partial');
+      if (partial) partial.indeterminate = true;
+    });
+
+    function toggleSizes() {
+      const section = document.querySelector('.ds-btn-section');
+      const btn = document.getElementById('toggle-sizes');
+      const expanded = section.classList.toggle('ds-sizes-visible');
+      btn.textContent = expanded ? '− Hide sizes' : '+ Show all sizes';
+    }
+
+    let dark = false;
+    function toggleTheme() {
+      dark = !dark;
+      document.getElementById('tokens-light').disabled = dark;
+      document.getElementById('tokens-dark').disabled = !dark;
+      const btn = document.getElementById('toggle-theme');
+      btn.innerHTML = dark ? sunSVG : moonSVG;
+      btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      btn.blur();
+    }
+  </script>
+</body>
+</html>
