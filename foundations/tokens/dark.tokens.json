@@ -1104,12 +1104,12 @@
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.13333334028720856,
-          0.13725490868091583,
-          0.1568627506494522
+          0.16862745583057404,
+          0.1882352977991104,
+          0.23137255012989044
         ],
         "alpha": 1,
-        "hex": "#222328"
+        "hex": "#2B303B"
       },
       "$description": "this is our primary surface color, gray 0",
       "$extensions": {
@@ -1130,12 +1130,12 @@
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.20000000298023224,
-          0.239215686917305,
-          0.3019607961177826
+          0.18039216101169586,
+          0.2078431397676468,
+          0.25882354378700256
         ],
         "alpha": 1,
-        "hex": "#333D4D"
+        "hex": "#2E3542"
       },
       "$description": "this is our secondary surface color, gray 05",
       "$extensions": {
