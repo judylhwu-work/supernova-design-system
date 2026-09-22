@@ -2056,6 +2056,33 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
+              0.1568627506494522,
+              0.34117648005485535,
+              0.4000000059604645
+            ],
+            "alpha": 1,
+            "hex": "#285766"
+          },
+          "$description": "this is our primary info surface, cyan 10",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:2931:58901",
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:beca2efdca9d7396fcadd2b168cd71d257c353ab/-1:-1",
+              "targetVariableName": "color/blue/90",
+              "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
+              "targetVariableSetName": "🦍 primitives"
+            }
+          }
+        },
+        "2": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
               0.23529411852359772,
               0.5098039507865906,
               0.6000000238418579
@@ -2063,9 +2090,9 @@
             "alpha": 1,
             "hex": "#3C8299"
           },
-          "$description": "this is our primary info surface, cyan 10",
+          "$description": "this is our secondary info surface, cyan 20",
           "$extensions": {
-            "com.figma.variableId": "VariableID:2931:58901",
+            "com.figma.variableId": "VariableID:2931:58902",
             "com.figma.scopes": [
               "FRAME_FILL",
               "SHAPE_FILL"
@@ -2078,7 +2105,7 @@
             }
           }
         },
-        "2": {
+        "3": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",
@@ -2090,9 +2117,9 @@
             "alpha": 1,
             "hex": "#50AECC"
           },
-          "$description": "this is our secondary info surface, cyan 20",
+          "$description": "this is our tertiary info surface, cyan 30",
           "$extensions": {
-            "com.figma.variableId": "VariableID:2931:58902",
+            "com.figma.variableId": "VariableID:2931:58903",
             "com.figma.scopes": [
               "FRAME_FILL",
               "SHAPE_FILL"
@@ -2105,7 +2132,7 @@
             }
           }
         },
-        "3": {
+        "action": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",
@@ -2117,33 +2144,6 @@
             "alpha": 1,
             "hex": "#64D9FF"
           },
-          "$description": "this is our tertiary info surface, cyan 30",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:2931:58903",
-            "com.figma.scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL"
-            ],
-            "com.figma.aliasData": {
-              "targetVariableId": "VariableID:ea5aaa6628841a8b1aa675e8c53463daf14de357/-1:-1",
-              "targetVariableName": "color/blue/60",
-              "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
-              "targetVariableSetName": "🦍 primitives"
-            }
-          }
-        },
-        "action": {
-          "$type": "color",
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [
-              0.5137255191802979,
-              0.8823529481887817,
-              1
-            ],
-            "alpha": 1,
-            "hex": "#83E1FF"
-          },
           "$description": "use this for actions or in components",
           "$extensions": {
             "com.figma.variableId": "VariableID:2931:58904",
@@ -2152,8 +2152,8 @@
               "SHAPE_FILL"
             ],
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:9acf755999febd0ac61fdb99f5ed197ed1fd0dc3/-1:-1",
-              "targetVariableName": "color/blue/50",
+              "targetVariableId": "VariableID:ea5aaa6628841a8b1aa675e8c53463daf14de357/-1:-1",
+              "targetVariableName": "color/blue/60",
               "targetVariableSetId": "VariableCollectionId:609453c3a4d919dad58b94678f0ea9c94f9da17e/-1:-1",
               "targetVariableSetName": "🦍 primitives"
             }

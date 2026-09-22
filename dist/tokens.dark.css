@@ -82,10 +82,10 @@
   --sn-surface-state-error-3: #FF2A00; /** this is our tertiary error surface, error 30 */
   --sn-surface-state-error-action: #FF5533; /** use this for actions or in components (e.g. destructive primary buttons) */
   --sn-surface-state-error-action-hover: #FF7F66; /** use this for actions on hover or in components (e.g. destructive primary buttons) */
-  --sn-surface-state-info-1: #3C8299; /** this is our primary info surface, cyan 10 */
-  --sn-surface-state-info-2: #50AECC; /** this is our secondary info surface, cyan 20 */
-  --sn-surface-state-info-3: #64D9FF; /** this is our tertiary info surface, cyan 30 */
-  --sn-surface-state-info-action: #83E1FF; /** use this for actions or in components */
+  --sn-surface-state-info-1: #285766; /** this is our primary info surface, cyan 10 */
+  --sn-surface-state-info-2: #3C8299; /** this is our secondary info surface, cyan 20 */
+  --sn-surface-state-info-3: #50AECC; /** this is our tertiary info surface, cyan 30 */
+  --sn-surface-state-info-action: #64D9FF; /** use this for actions or in components */
   --sn-surface-palette-purple-1: #583661;
   --sn-surface-palette-purple-2: #855291;
   --sn-surface-palette-purple-3: #B16DC2;
