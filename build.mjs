@@ -11,7 +11,7 @@ const tmp = join(__dir, '.build-tmp');
 // 2. Rename $root keys → 'default' (Figma uses $root for a group's own value)
 // 3. Strip $extensions (Figma-only metadata, not needed in output)
 // 4. Convert fontWeight strings to numbers ("SemiBold" → 600)
-function clean(obj) {
+function clean(obj, path = []) {
   if (typeof obj !== 'object' || obj === null) return obj;
 
   if ('$value' in obj) {
@@ -22,7 +22,10 @@ function clean(obj) {
     // Convert font weight style names to numbers.
     // Figma exports these as $type:"string" with FONT_STYLE scope (not $type:"fontWeight").
     const figmaScopes = obj.$extensions?.['com.figma.scopes'] ?? [];
-    const isFontWeight = obj.$type === 'fontWeight' || figmaScopes.includes('FONT_STYLE');
+    // Figma has also exported them with no scopes at all, so a token under a
+    // font > weight group counts too — otherwise "Extrabold" reaches the CSS.
+    const underWeight = path.includes('font') && path.includes('weight');
+    const isFontWeight = obj.$type === 'fontWeight' || figmaScopes.includes('FONT_STYLE') || underWeight;
     if (isFontWeight && typeof value === 'string') {
       const weightMap = { thin: 100, hairline: 100, extralight: 200, ultralight: 200, light: 300, regular: 400, normal: 400, medium: 500, semibold: 600, demibold: 600, bold: 700, extrabold: 800, ultrabold: 800, black: 900, heavy: 900 };
       value = weightMap[value.toLowerCase()] ?? value;
@@ -40,7 +43,7 @@ function clean(obj) {
     // Strip pixel/value annotations Figma adds to key names: "minimal (2)" → "minimal"
     let key = k.replace(/\s+\(\d+\)$/, '');
     if (key === '$root') key = 'default';
-    out[key] = clean(v);
+    out[key] = clean(v, [...path, key]);
   }
   return out;
 }
