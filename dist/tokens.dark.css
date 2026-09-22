@@ -10,14 +10,14 @@
   --sn-text-white: #F4F4F5; /** text will stay white in dark mode */
   --sn-text-black: #222328; /** text will stay black in dark mode */
   --sn-text-empty: #848991; /** used for "empty" text in components */
-  --sn-text-brand-green-dark: #26993E; /** this is your darkest brand color for text */
+  --sn-text-brand-green-dark: #59CC71; /** this is your darkest brand color for text */
   --sn-text-brand-green-light: #83D994; /** this is your darkest brand color for text */
   --sn-text-brand-green-invert: #0A260F; /** use for brand text with dark colored backgrounds */
-  --sn-text-brand-pink-dark: #CC377F; /** this is your lightest brand color text */
+  --sn-text-brand-pink-dark: #FF6AB2; /** this is your lightest brand color text */
   --sn-text-brand-pink-light: #FF8FC5; /** this is your lightest brand color text */
   --sn-text-brand-pink-invert: #330E20; /** use for brand text with dark colored backgrounds */
   --sn-text-brand-action-main: #FF8FC5; /** use this for actions or in components (e.g. links or buttons) */
-  --sn-text-brand-action-visited: #26993E; /** use this for actions on hover or in components (e.g. links or buttons) */
+  --sn-text-brand-action-visited: #59CC71; /** use this for actions on hover or in components (e.g. links or buttons) */
   --sn-text-disabled-main: #6E7580; /** used for "disabled" text in components */
   --sn-text-disabled-invert: #6E7580; /** used for "disabled" text in components */
   --sn-text-state-success-1: #E6FCE6; /** this is your darkest success text, success 100 */
@@ -47,11 +47,11 @@
   --sn-text-palette-raspberry-invert: #532F40;
   --sn-surface-1: #2B303B; /** this is our primary surface color, gray 0 */
   --sn-surface-2: #2E3542; /** this is our secondary surface color, gray 05 */
-  --sn-surface-3: #4D5563; /** this is our tertiary surface color, gray 10 */
-  --sn-surface-4: #5D6573; /** this is our quaternary surface color, gray 15 */
-  --sn-surface-5: #6E7580; /** this is our quinary surface color, gray 20 */
+  --sn-surface-3: #333D4D; /** this is our tertiary surface color, gray 10 */
+  --sn-surface-4: #4D5563; /** this is our quaternary surface color, gray 15 */
+  --sn-surface-5: #5D6573; /** this is our quinary surface color, gray 20 */
   --sn-surface-white: #F4F4F5;
-  --sn-surface-disabled: #4D5563; /** used for "disabled" chip & button */
+  --sn-surface-disabled: #333D4D; /** used for "disabled" chip & button */
   --sn-surface-invert-darker: #9CA0A6; /** use this when a darker background is needed, like our dark gray badge component */
   --sn-surface-invert-darkest: #F4F4F5; /** use this when a darker background is needed, like our dark gray badge component */
   --sn-surface-invert-main: #9CA0A6; /** use this when a darker background is needed, like our dark gray badge component */
@@ -66,7 +66,7 @@
   --sn-surface-brand-pink-3: #CC377F; /** this is our 3rd lightest brand surface */
   --sn-surface-brand-pink-logo: #FF6AB2; /** used in our logo component */
   --sn-surface-brand-pink-to-elevation-1: #222328; /** this is our 2nd lightest brand surface */
-  --sn-surface-brand-pink-to-elevation-2: #333D4D; /** this is our 2nd lightest brand surface */
+  --sn-surface-brand-pink-to-elevation-2: #2E3542; /** this is our 2nd lightest brand surface */
   --sn-surface-brand-pink-action-main: #FF6AB2; /** use this for actions or in components (e.g. primary buttons) */
   --sn-surface-brand-pink-action-hover: #FF8FC5; /** use this for actions on hover or in components (e.g. primary buttons on hover) */
   --sn-surface-state-success-1: #00B500; /** this is our primary success surface, success 10 */
@@ -200,11 +200,11 @@
   --sn-scale-palette-raspberry-90: #F5E4EC;
   --sn-scale-palette-raspberry-100: #FAF1F5;
   --sn-elevation-none: #222328; /** this is your base color, gray 95 */
-  --sn-elevation-low: #333D4D; /** this is an element's resting state, gray 93 */
-  --sn-elevation-low-medium: #4D5563; /** this is an element's resting state, gray 90 */
-  --sn-elevation-medium: #5D6573; /** this is an element's interacted state, gray 85 */
-  --sn-elevation-medium-high: #6E7580; /** this is an element's interacted state, gray 80 */
-  --sn-elevation-high: #848991; /** this is an element's interacted state, with the most elevation, gray 75 */
+  --sn-elevation-low: #2E3542; /** this is an element's resting state, gray 93 */
+  --sn-elevation-low-medium: #333D4D; /** this is an element's resting state, gray 90 */
+  --sn-elevation-medium: #4D5563; /** this is an element's interacted state, gray 85 */
+  --sn-elevation-medium-high: #5D6573; /** this is an element's interacted state, gray 80 */
+  --sn-elevation-high: #6E7580; /** this is an element's interacted state, with the most elevation, gray 75 */
   --sn-border-color-1: #4D5563; /** this is our primary border, which is the lightest at gray 20 */
   --sn-border-color-2: #5D6573; /** this is our secondary border color, gray 30 */
   --sn-border-color-3: #6E7580; /** this is our tertiary border, gray 40 */
@@ -241,7 +241,7 @@
   --sn-spacing-5xl: 64px;
   --sn-spacing-6xl: 72px;
   --sn-spacing-7xl: 80px;
-  --sn-components-surface-1: #4D5563; /** used for an element's resting state (i.e. secondary buttons, dropdown buttons, and inputs) */
+  --sn-components-surface-1: #333D4D; /** used for an element's resting state (i.e. secondary buttons, dropdown buttons, and inputs) */
   --sn-components-text-state-action: #F4F4F5; /** used in banners and snackbars, where dark mode becomes elevation-medium */
   --sn-components-text-state-success: #F4F4F5; /** used in banners and snackbars, where dark mode becomes elevation-medium */
   --sn-components-text-state-warning: #F4F4F5; /** used in banners and snackbars, where dark mode becomes elevation-medium */
@@ -253,12 +253,12 @@
   --sn-components-badge-surface-orange: #FDA161;
   --sn-components-chip-surface-active-hover: #FF6AB2;
   --sn-components-chip-surface-active-default: #FF459F;
-  --sn-components-dropdown-surface-menu: #333D4D;
-  --sn-components-selection-controls-border-hover: #6E7580; /** used for checkbox and radio button borders that are turned off */
-  --sn-components-selection-controls-border-disabled: #333D4D; /** used for checkbox and radio button borders that are turned off */
+  --sn-components-dropdown-surface-menu: #2E3542;
+  --sn-components-selection-controls-border-hover: #5D6573; /** used for checkbox and radio button borders that are turned off */
+  --sn-components-selection-controls-border-disabled: #2E3542; /** used for checkbox and radio button borders that are turned off */
   --sn-components-selection-controls-border-default: #848991; /** used for checkbox and radio button borders that are turned off */
-  --sn-components-selection-controls-surface-on-disabled: #333D4D; /** used in banners and snackbars, where dark mode becomes elevation-medium */
-  --sn-components-selection-controls-surface-off-disabled: #333D4D; /** used in banners and snackbars, where dark mode becomes elevation-medium */
+  --sn-components-selection-controls-surface-on-disabled: #2E3542; /** used in banners and snackbars, where dark mode becomes elevation-medium */
+  --sn-components-selection-controls-surface-off-disabled: #2E3542; /** used in banners and snackbars, where dark mode becomes elevation-medium */
   --sn-components-selection-controls-text-off: #F4F4F5; /** used in banners and snackbars, where dark mode becomes elevation-medium */
   --sn-components-selection-controls-text-on-disabled: #F4F4F5; /** used in banners and snackbars, where dark mode becomes elevation-medium */
 }

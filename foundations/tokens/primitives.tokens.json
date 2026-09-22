@@ -485,6 +485,44 @@
           "com.figma.variableId": "VariableID:123:7058"
         }
       },
+      "95": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.18039216101169586,
+            0.2078431397676468,
+            0.25882354378700256
+          ],
+          "alpha": 1,
+          "hex": "#2E3542"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:25182:89",
+          "com.figma.scopes": [
+            "ALL_FILLS"
+          ]
+        }
+      },
+      "98": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.16862745583057404,
+            0.1882352977991104,
+            0.23137255012989044
+          ],
+          "alpha": 1,
+          "hex": "#2B303B"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:25182:88",
+          "com.figma.scopes": [
+            "ALL_FILLS"
+          ]
+        }
+      },
       "100": {
         "$type": "color",
         "$value": {
@@ -1702,10 +1740,7 @@
       "$type": "number",
       "$value": 16,
       "$extensions": {
-        "com.figma.variableId": "VariableID:24979:71250",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ]
+        "com.figma.variableId": "VariableID:24979:71250"
       }
     },
     "360": {
@@ -1829,80 +1864,56 @@
         "$type": "number",
         "$value": 10,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:19248",
-          "com.figma.scopes": [
-            "FONT_SIZE"
-          ]
+          "com.figma.variableId": "VariableID:2570:19248"
         }
       },
       "12": {
         "$type": "number",
         "$value": 12,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27386",
-          "com.figma.scopes": [
-            "FONT_SIZE"
-          ]
+          "com.figma.variableId": "VariableID:2570:27386"
         }
       },
       "14": {
         "$type": "number",
         "$value": 14,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27388",
-          "com.figma.scopes": [
-            "FONT_SIZE"
-          ]
+          "com.figma.variableId": "VariableID:2570:27388"
         }
       },
       "16": {
         "$type": "number",
         "$value": 16,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27389",
-          "com.figma.scopes": [
-            "FONT_SIZE"
-          ]
+          "com.figma.variableId": "VariableID:2570:27389"
         }
       },
       "18": {
         "$type": "number",
         "$value": 18,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27390",
-          "com.figma.scopes": [
-            "FONT_SIZE"
-          ]
+          "com.figma.variableId": "VariableID:2570:27390"
         }
       },
       "20": {
         "$type": "number",
         "$value": 20,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27391",
-          "com.figma.scopes": [
-            "FONT_SIZE"
-          ]
+          "com.figma.variableId": "VariableID:2570:27391"
         }
       },
       "24": {
         "$type": "number",
         "$value": 24,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27392",
-          "com.figma.scopes": [
-            "FONT_SIZE"
-          ]
+          "com.figma.variableId": "VariableID:2570:27392"
         }
       },
       "32": {
         "$type": "number",
         "$value": 32,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27393",
-          "com.figma.scopes": [
-            "FONT_SIZE"
-          ]
+          "com.figma.variableId": "VariableID:2570:27393"
         }
       }
     },
@@ -1912,9 +1923,6 @@
         "$value": "Karla",
         "$extensions": {
           "com.figma.variableId": "VariableID:2570:27403",
-          "com.figma.scopes": [
-            "FONT_FAMILY"
-          ],
           "com.figma.type": "string"
         }
       },
@@ -1923,9 +1931,6 @@
         "$value": "Inter",
         "$extensions": {
           "com.figma.variableId": "VariableID:2570:27402",
-          "com.figma.scopes": [
-            "FONT_FAMILY"
-          ],
           "com.figma.type": "string"
         }
       }
@@ -1936,9 +1941,6 @@
         "$value": "Regular",
         "$extensions": {
           "com.figma.variableId": "VariableID:2570:27404",
-          "com.figma.scopes": [
-            "FONT_STYLE"
-          ],
           "com.figma.type": "string"
         }
       },
@@ -1947,9 +1949,6 @@
         "$value": "SemiBold",
         "$extensions": {
           "com.figma.variableId": "VariableID:2570:27405",
-          "com.figma.scopes": [
-            "FONT_STYLE"
-          ],
           "com.figma.type": "string"
         }
       },
@@ -1958,9 +1957,6 @@
         "$value": "Extrabold",
         "$extensions": {
           "com.figma.variableId": "VariableID:25104:13345",
-          "com.figma.scopes": [
-            "FONT_STYLE"
-          ],
           "com.figma.type": "string"
         }
       }
@@ -1970,30 +1966,21 @@
         "$type": "number",
         "$value": 18,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27425",
-          "com.figma.scopes": [
-            "PARAGRAPH_SPACING"
-          ]
+          "com.figma.variableId": "VariableID:2570:27425"
         }
       },
       "20": {
         "$type": "number",
         "$value": 20,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27427",
-          "com.figma.scopes": [
-            "PARAGRAPH_SPACING"
-          ]
+          "com.figma.variableId": "VariableID:2570:27427"
         }
       },
       "24": {
         "$type": "number",
         "$value": 24,
         "$extensions": {
-          "com.figma.variableId": "VariableID:2570:27428",
-          "com.figma.scopes": [
-            "PARAGRAPH_SPACING"
-          ]
+          "com.figma.variableId": "VariableID:2570:27428"
         }
       }
     }
